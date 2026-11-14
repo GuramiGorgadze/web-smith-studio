@@ -1,0 +1,38 @@
+.card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: radius("xl");
+  transition:
+    border-color dur("base") $ease-out,
+    transform dur("base") $ease-out,
+    box-shadow dur("base") $ease-out;
+
+  // Spotlight: a radial highlight that follows the pointer
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(
+      340px circle at var(--mx, 50%) var(--my, 0%),
+      color-mix(in srgb, var(--brand-indigo) 22%, transparent),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity dur("slow") $ease-out;
+  }
+
+  @include hover-device {
+    &:hover {
+      border-color: color-mix(in srgb, var(--brand-periwinkle) 42%, var(--border));
+      box-shadow: var(--shadow-md);
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+}

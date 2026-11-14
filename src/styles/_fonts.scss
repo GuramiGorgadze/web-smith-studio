@@ -1,0 +1,27 @@
+// Georgian letters. Geist has none, so the browser takes them from this font, letter by letter, through the
+// font stacks in _theme.scss. The unicode-range makes the file (about 41 KB) download only when a page
+// really shows Georgian text, so English visitors never pay for it.
+// The file comes from the @fontsource-variable/noto-sans-georgian package (SIL Open Font License).
+
+@font-face {
+  font-family: "Noto Sans Georgian Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("@fontsource-variable/noto-sans-georgian/files/noto-sans-georgian-georgian-wght-normal.woff2")
+    format("woff2-variations");
+  unicode-range: U+0589, U+10A0-10FF, U+1C90-1CBA, U+1CBD-1CBF, U+205A, U+2D00-2D2F, U+2E31;
+}
+
+// The same file once more, for the space character only. A label set in the mono font takes its spaces from
+// Geist Mono (0.6em wide, more than twice a Georgian space), which pulls the words of a Georgian label apart.
+// This family is named only in the Georgian mono stack (see _theme.scss), so English pages never download it.
+@font-face {
+  font-family: "Noto Sans Georgian Space";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("@fontsource-variable/noto-sans-georgian/files/noto-sans-georgian-georgian-wght-normal.woff2")
+    format("woff2-variations");
+  unicode-range: U+0020;
+}

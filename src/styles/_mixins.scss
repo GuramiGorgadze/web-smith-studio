@@ -1,0 +1,137 @@
+@use "tokens" as t;
+@use "functions" as f;
+
+// ---------- Responsive ----------
+@mixin up($name) {
+  @media (min-width: f.bp($name)) {
+    @content;
+  }
+}
+
+@mixin down($name) {
+  @media (max-width: calc(#{f.bp($name)} - 0.02px)) {
+    @content;
+  }
+}
+
+@mixin between($from, $to) {
+  @media (min-width: f.bp($from)) and (max-width: calc(#{f.bp($to)} - 0.02px)) {
+    @content;
+  }
+}
+
+@mixin hover-device {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin motion-ok {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+// ---------- Layout ----------
+@mixin container($max: t.$container-width) {
+  width: 100%;
+  max-width: calc(#{$max} + 2 * #{t.$gutter});
+  margin-inline: auto;
+  padding-inline: t.$gutter;
+}
+
+@mixin section-y($scale: 1) {
+  padding-block: calc(clamp(4.5rem, 10vw, 8.5rem) * #{$scale});
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ---------- Interaction ----------
+@mixin focus-ring($offset: 2px) {
+  outline: 2px solid var(--ring);
+  outline-offset: $offset;
+}
+
+@mixin focus-visible-ring($offset: 2px) {
+  &:focus-visible {
+    @include focus-ring($offset);
+  }
+}
+
+@mixin press {
+  transition:
+    transform f.dur("fast") t.$ease-out,
+    background-color f.dur("base") t.$ease-out,
+    border-color f.dur("base") t.$ease-out,
+    color f.dur("base") t.$ease-out,
+    box-shadow f.dur("base") t.$ease-out,
+    opacity f.dur("base") t.$ease-out;
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+// ---------- Surfaces ----------
+@mixin hairline($side: null) {
+  @if $side {
+    border-#{$side}: 1px solid var(--border);
+  } @else {
+    border: 1px solid var(--border);
+  }
+}
+
+@mixin surface($radius: "lg") {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: f.radius($radius);
+}
+
+@mixin glass($blur: 14px) {
+  background: color-mix(in srgb, var(--background) 72%, transparent);
+  // Prefixed first, standard last: the minifier drops the standard property when the order is reversed.
+  -webkit-backdrop-filter: blur($blur) saturate(140%);
+  backdrop-filter: blur($blur) saturate(140%);
+}
+
+@mixin gradient-text($gradient: var(--gradient-text)) {
+  background-image: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+// ---------- Typography ----------
+@mixin eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  color: var(--muted-foreground);
+}
+
+@mixin truncate-lines($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

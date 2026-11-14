@@ -1,0 +1,25 @@
+.wrap {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+}
+
+.mark {
+  animation: loadingPulse 1.4s ease-in-out infinite;
+
+  @include reduced-motion {
+    animation: none;
+  }
+}
+
+@keyframes loadingPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

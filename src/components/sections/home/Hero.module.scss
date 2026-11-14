@@ -1,0 +1,120 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-top: calc(var(--nav-height) + clamp(3.5rem, 9vw, 7.5rem));
+  padding-bottom: clamp(3rem, 7vw, 5.5rem);
+  overflow: hidden;
+}
+
+.watermark {
+  position: absolute;
+  top: calc(var(--nav-height) - 1rem);
+  left: 50%;
+  z-index: -1;
+  opacity: 0.1;
+  pointer-events: none;
+  transform: translateX(-50%);
+  mask-image: linear-gradient(to bottom, #000 30%, transparent 92%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 92%);
+
+  svg {
+    max-width: none;
+  }
+
+  @include motion-ok {
+    animation: heroFloat 14s ease-in-out infinite alternate;
+  }
+
+  :root[data-theme="light"] & {
+    opacity: 0.07;
+  }
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 54rem;
+  text-align: center;
+}
+
+.title {
+  font-size: var(--text-5xl);
+  text-wrap: balance;
+}
+
+.lead {
+  max-width: 40rem;
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.promises {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.75rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  // On phones the three promises stack; left-aligning them keeps the check marks in one column.
+  @include down("sm") {
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: center;
+  }
+}
+
+.promise {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+
+  svg {
+    color: var(--accent);
+  }
+}
+
+.legal {
+  font-size: var(--text-xs);
+  color: var(--subtle);
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    transition: color dur("base") $ease-out;
+
+    @include hover-device {
+      &:hover {
+        color: var(--foreground);
+      }
+    }
+  }
+}
+
+@keyframes heroFloat {
+  from {
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    transform: translateX(-50%) translateY(14px);
+  }
+}

@@ -1,0 +1,37 @@
+@use "sass:map";
+@use "tokens" as t;
+
+@function bp($name) {
+  @if not map.has-key(t.$breakpoints, $name) {
+    @error "Unknown breakpoint `#{$name}`.";
+  }
+  @return map.get(t.$breakpoints, $name);
+}
+
+@function z($layer) {
+  @if not map.has-key(t.$z-layers, $layer) {
+    @error "Unknown z-index layer `#{$layer}`.";
+  }
+  @return map.get(t.$z-layers, $layer);
+}
+
+@function radius($name) {
+  @if not map.has-key(t.$radii, $name) {
+    @error "Unknown radius `#{$name}`.";
+  }
+  @return map.get(t.$radii, $name);
+}
+
+@function dur($name) {
+  @if not map.has-key(t.$durations, $name) {
+    @error "Unknown duration `#{$name}`.";
+  }
+  @return map.get(t.$durations, $name);
+}
+
+@function space($step) {
+  @if not map.has-key(t.$space, $step) {
+    @error "Unknown spacing step `#{$step}`.";
+  }
+  @return map.get(t.$space, $step);
+}

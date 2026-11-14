@@ -1,0 +1,138 @@
+.detail {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  // Leaves room for the navbar and the sticky service menu when an anchor link lands here.
+  scroll-margin-top: calc(var(--nav-height) + 5rem);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+
+  & + & {
+    border-top: 1px solid var(--border);
+  }
+
+  @include up("lg") {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+}
+
+// Alternate sides on desktop so the page has a rhythm.
+.reversed {
+  @include up("lg") {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+
+    .copy {
+      order: 2;
+    }
+
+    .aside {
+      order: 1;
+    }
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.title {
+  font-size: var(--text-4xl);
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+}
+
+.description {
+  max-width: 38rem;
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+.bullets {
+  margin-top: 0.5rem;
+}
+
+.aside {
+  min-width: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: radius("2xl");
+}
+
+// Oversized outline icon that bleeds off the corner.
+.watermark {
+  position: absolute;
+  top: -1.5rem;
+  right: -1.5rem;
+  z-index: -1;
+  color: var(--accent);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 0;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  & + & {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+}
+
+.factLabel {
+  @include eyebrow;
+  font-weight: 450;
+}
+
+.factValue {
+  margin: 0;
+  font-size: var(--text-lg);
+  line-height: 1.5;
+  color: var(--foreground);
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  margin: 0;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  @include gradient-text;
+  padding-bottom: 0.08em;
+}
+
+.suffix {
+  font-size: 0.45em;
+  font-weight: 450;
+  letter-spacing: -0.01em;
+}
+
+.cta {
+  align-self: flex-start;
+}

@@ -1,0 +1,87 @@
+.box {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem 1rem;
+  align-items: start;
+  padding: 1.1rem 1.25rem;
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--brand-periwinkle) 45%, var(--border));
+  border-radius: radius("lg");
+
+  @include up("sm") {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--brand-periwinkle) 16%, transparent);
+  border-radius: radius("md");
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.title {
+  @include eyebrow;
+  font-weight: 450;
+}
+
+.headline {
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.details {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+
+.range {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.weeks {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+.toggle {
+  grid-column: 1 / -1;
+  justify-self: start;
+
+  @include up("sm") {
+    grid-column: auto;
+    justify-self: end;
+  }
+}
+
+// Once removed, the box calms down so it reads as a quiet note rather than a call to action.
+.box[data-included="false"] {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--border-strong);
+
+  .icon {
+    color: var(--muted-foreground);
+    background: var(--muted);
+  }
+}

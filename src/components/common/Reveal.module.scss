@@ -1,0 +1,20 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity dur("slower") $ease-out var(--reveal-delay, 0ms),
+    transform dur("slower") $ease-out var(--reveal-delay, 0ms);
+}
+
+.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@include reduced-motion {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

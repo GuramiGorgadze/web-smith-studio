@@ -1,0 +1,85 @@
+.panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4.5rem);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--card) 82%, transparent);
+  border: 1px solid var(--border-strong);
+  border-radius: radius("2xl");
+  box-shadow: var(--shadow-lg);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  max-width: 44rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2.25rem, 5.2vw, 4rem);
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+}
+
+.description {
+  max-width: 36rem;
+  font-size: var(--text-lg);
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include up("md") {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  text-align: left;
+  background: color-mix(in srgb, var(--background) 55%, transparent);
+  border: 1px solid var(--border);
+  border-radius: radius("xl");
+}
+
+.number {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--accent);
+}
+
+.stepTitle {
+  font-size: var(--text-lg);
+  letter-spacing: -0.02em;
+}
+
+.stepText {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}

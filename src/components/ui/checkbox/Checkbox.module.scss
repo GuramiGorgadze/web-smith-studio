@@ -1,0 +1,60 @@
+@include kf-scale-in;
+
+.root {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  color: var(--primary-foreground);
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  border: 1px solid var(--input);
+  border-radius: radius("xs");
+  cursor: pointer;
+  transition:
+    background-color dur("fast") $ease-out,
+    border-color dur("fast") $ease-out,
+    box-shadow dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  // Larger hit area (44px) around the visible box
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -0.55rem;
+  }
+
+  @include hover-device {
+    &:hover {
+      border-color: var(--border-strong);
+    }
+  }
+
+  &[data-state="checked"] {
+    background-image: var(--gradient-brand);
+    border-color: transparent;
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--destructive);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  @include motion-ok {
+    &[data-state="checked"] {
+      animation: scaleIn dur("fast") $ease-spring;
+    }
+  }
+}

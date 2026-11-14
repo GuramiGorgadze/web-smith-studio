@@ -1,0 +1,123 @@
+@include kf-scale-in;
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 2.875rem;
+  padding: 0.7rem 0.95rem;
+  font-size: max(1rem, 16px);
+  line-height: 1.4;
+  text-align: left;
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  border: 1px solid var(--input);
+  border-radius: radius("md");
+  cursor: pointer;
+  transition:
+    border-color dur("base") $ease-out,
+    box-shadow dur("base") $ease-out;
+
+  &[data-placeholder] {
+    color: var(--subtle);
+  }
+
+  @include hover-device {
+    &:hover {
+      border-color: var(--border-strong);
+    }
+  }
+
+  &:focus-visible,
+  &[data-state="open"] {
+    outline: none;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 28%, transparent);
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--destructive);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+  }
+}
+
+.value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+  transition: transform dur("base") $ease-out;
+
+  .trigger[data-state="open"] & {
+    transform: rotate(180deg);
+  }
+}
+
+.content {
+  z-index: z("toast");
+  overflow: hidden;
+  color: var(--popover-foreground);
+  background: var(--popover);
+  border: 1px solid var(--border-strong);
+  border-radius: radius("lg");
+  box-shadow: var(--shadow-lg);
+
+  @include motion-ok {
+    &[data-state="open"] {
+      animation: scaleIn dur("fast") $ease-out;
+      transform-origin: var(--radix-select-content-transform-origin);
+    }
+  }
+}
+
+.popper {
+  min-width: var(--radix-select-trigger-width);
+  max-height: min(var(--radix-select-content-available-height), 22rem);
+}
+
+.viewport {
+  padding: 0.35rem;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  border-radius: radius("sm");
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+
+  &[data-highlighted] {
+    background: var(--accent-soft);
+  }
+
+  &[data-state="checked"] {
+    font-weight: 500;
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.indicator {
+  display: inline-flex;
+  color: var(--accent);
+}

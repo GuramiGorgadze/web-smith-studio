@@ -1,0 +1,13 @@
+.tile {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.875rem;
+  height: 2.875rem;
+  color: var(--accent);
+  background: var(--gradient-brand-soft);
+  border: 1px solid color-mix(in srgb, var(--brand-periwinkle) 30%, transparent);
+  border-radius: radius("md");
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+}

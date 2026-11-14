@@ -1,0 +1,97 @@
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glow,
+.glowSecondary {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.9;
+}
+
+.glow {
+  top: -22rem;
+  left: 50%;
+  width: min(62rem, 120vw);
+  height: 40rem;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--brand-indigo) 46%, transparent), transparent);
+  transform: translateX(-50%);
+
+  @include motion-ok {
+    animation: glowDrift 18s ease-in-out infinite alternate;
+  }
+}
+
+.glowSecondary {
+  top: -6rem;
+  right: -14rem;
+  width: 34rem;
+  height: 34rem;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--brand-sky) 26%, transparent), transparent);
+  opacity: 0.7;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(70% 60% at 50% 0%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 0%, #000 0%, transparent 78%);
+}
+
+// Variants
+.section {
+  .glow {
+    top: auto;
+    bottom: -26rem;
+    height: 34rem;
+    opacity: 0.55;
+  }
+
+  .glowSecondary {
+    display: none;
+  }
+
+  .grid {
+    mask-image: radial-gradient(60% 55% at 50% 100%, #000 0%, transparent 78%);
+    -webkit-mask-image: radial-gradient(60% 55% at 50% 100%, #000 0%, transparent 78%);
+  }
+}
+
+.cta {
+  .glow {
+    top: 50%;
+    height: 34rem;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+  }
+
+  .glowSecondary {
+    top: auto;
+    bottom: -14rem;
+    right: auto;
+    left: -10rem;
+  }
+
+  .grid {
+    mask-image: radial-gradient(60% 70% at 50% 50%, #000 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(60% 70% at 50% 50%, #000 0%, transparent 80%);
+  }
+}
+
+@keyframes glowDrift {
+  from {
+    transform: translateX(-54%) scale(1);
+  }
+  to {
+    transform: translateX(-46%) scale(1.08);
+  }
+}

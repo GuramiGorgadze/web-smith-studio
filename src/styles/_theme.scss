@@ -1,0 +1,165 @@
+// Runtime theme tokens (CSS custom properties).
+//
+// Base surface #0d0c10 comes from psychsat.com (its theme-color); the brand ramp
+// (electric blue -> indigo -> periwinkle -> lavender -> orchid -> white) is sampled
+// straight from the Web Smith Studio logo. Naming follows shadcn/ui semantics.
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  // Brand ramp (from the logo)
+  --brand-deep: #02011d;
+  --brand-blue: #3a3dfb;
+  --brand-sky: #4a7efd;
+  --brand-indigo: #4f53fc;
+  --brand-periwinkle: #7c7afb;
+  --brand-lavender: #b8b4f9;
+  --brand-orchid: #d8c4fc;
+  --brand-white: #ffffff;
+
+  // Surfaces
+  --background: #0d0c10;
+  --foreground: #f5f5fa;
+  --card: #14131a;
+  --card-foreground: #f5f5fa;
+  --popover: #17161f;
+  --popover-foreground: #f5f5fa;
+  --muted: #1a1922;
+  --muted-foreground: #a3a2b8;
+  --subtle: #8a89a4;
+  --secondary: #1f1e29;
+  --secondary-foreground: #f5f5fa;
+
+  // Lines
+  --border: rgb(255 255 255 / 0.09);
+  --border-strong: rgb(255 255 255 / 0.16);
+  --input: rgb(255 255 255 / 0.14);
+  --ring: #8d8bff;
+
+  // Actions
+  --primary: #4f53fc;
+  --primary-hover: #6064ff;
+  --primary-foreground: #ffffff;
+  --primary-glow: rgb(79 83 252 / 0.45);
+  --accent: #b8b4f9;
+  --accent-foreground: #0d0c10;
+  --accent-soft: rgb(124 122 251 / 0.14);
+
+  // Status
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --destructive: #f87171;
+
+  // Gradients
+  --gradient-brand: linear-gradient(135deg, #4a7efd 0%, #3a3dfb 48%, #7c7afb 100%);
+  --gradient-brand-soft: linear-gradient(135deg, rgb(74 126 253 / 0.2), rgb(124 122 251 / 0.08));
+  --gradient-text: linear-gradient(115deg, #ffffff 0%, #d9d6ff 42%, #8d8bff 100%);
+  --gradient-glow: radial-gradient(60% 60% at 50% 0%, rgb(79 83 252 / 0.34) 0%, transparent 70%);
+
+  // Elevation
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 8px 24px -8px rgb(0 0 0 / 0.55);
+  --shadow-lg: 0 24px 60px -20px rgb(0 0 0 / 0.7);
+  --shadow-glow: 0 10px 40px -10px var(--primary-glow);
+  --scrim: rgb(5 4 12 / 0.72);
+
+  // Misc
+  --grid-line: rgb(255 255 255 / 0.045);
+  --window-chrome: #101016;
+  --logo-slash: #ffffff;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --brand-deep: #02011d;
+  --brand-blue: #3a3dfb;
+  --brand-sky: #4a7efd;
+  --brand-indigo: #4f53fc;
+  --brand-periwinkle: #7c7afb;
+  --brand-lavender: #b8b4f9;
+  --brand-orchid: #d8c4fc;
+  --brand-white: #ffffff;
+
+  --background: #fafaff;
+  --foreground: #0d0c10;
+  --card: #ffffff;
+  --card-foreground: #0d0c10;
+  --popover: #ffffff;
+  --popover-foreground: #0d0c10;
+  --muted: #f0f0fa;
+  --muted-foreground: #5b5a70;
+  --subtle: #65647c;
+  --secondary: #ecebf8;
+  --secondary-foreground: #0d0c10;
+
+  --border: rgb(13 12 16 / 0.1);
+  --border-strong: rgb(13 12 16 / 0.2);
+  --input: rgb(13 12 16 / 0.18);
+  --ring: #3a3dfb;
+
+  --primary: #3a3dfb;
+  --primary-hover: #2f32e6;
+  --primary-foreground: #ffffff;
+  --primary-glow: rgb(58 61 251 / 0.35);
+  --accent: #3a3dfb;
+  --accent-foreground: #ffffff;
+  --accent-soft: rgb(58 61 251 / 0.08);
+
+  --success: #166534;
+  --warning: #b45309;
+  --destructive: #dc2626;
+
+  --gradient-brand: linear-gradient(135deg, #4a7efd 0%, #3a3dfb 48%, #6a5cff 100%);
+  --gradient-brand-soft: linear-gradient(135deg, rgb(74 126 253 / 0.14), rgb(124 122 251 / 0.06));
+  --gradient-text: linear-gradient(115deg, #0d0c10 0%, #2b2cc9 55%, #5b4bd8 100%);
+  --gradient-glow: radial-gradient(60% 60% at 50% 0%, rgb(79 83 252 / 0.2) 0%, transparent 70%);
+
+  --shadow-sm: 0 1px 2px rgb(20 20 60 / 0.08);
+  --shadow-md: 0 10px 28px -10px rgb(20 20 80 / 0.18);
+  --shadow-lg: 0 28px 60px -24px rgb(20 20 80 / 0.28);
+  --shadow-glow: 0 12px 40px -12px var(--primary-glow);
+  --scrim: rgb(13 12 40 / 0.45);
+
+  --grid-line: rgb(13 12 16 / 0.05);
+  --window-chrome: #f3f3fb;
+  --logo-slash: #0d0c10;
+}
+
+:root {
+  // Type
+  // Geist has no Georgian letters, so those come from Noto Sans Georgian (see _fonts.scss). It sits right after
+  // Geist: Latin text and digits always use Geist, Georgian text uses Noto, and one line can mix both.
+  --font-sans:
+    "Geist Variable", "Geist", "Noto Sans Georgian Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono:
+    "Geist Mono Variable", "Geist Mono", "Noto Sans Georgian Variable", ui-monospace, "SF Mono", SFMono-Regular,
+    Menlo, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: clamp(1.625rem, 2.6vw, 2.125rem);
+  --text-4xl: clamp(2rem, 4vw, 3.125rem);
+  --text-5xl: clamp(2.6rem, 6.4vw, 5rem);
+
+  // Motion
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  // Layout
+  --nav-height: 68px;
+  --gutter: clamp(1.25rem, 4vw, 2rem);
+}
+
+// Georgian pages: the spaces of mono-font labels come from the Georgian font too (see _fonts.scss).
+:root:lang(ka) {
+  --font-mono:
+    "Noto Sans Georgian Space", "Geist Mono Variable", "Geist Mono", "Noto Sans Georgian Variable", ui-monospace,
+    "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+}

@@ -1,0 +1,467 @@
+// Every length below is in cqw (1% of the thumbnail width) so the artwork scales with its container.
+
+.thumb {
+  container-type: inline-size;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  aspect-ratio: 16 / 10.5;
+  overflow: hidden;
+  color: var(--p-text);
+  background: var(--p-bg);
+  border-radius: inherit;
+}
+
+// ---------- Shared pieces ----------
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 7cqw;
+  padding-inline: 4cqw;
+  flex-shrink: 0;
+}
+
+.brand {
+  width: 3.4cqw;
+  height: 3.4cqw;
+  background: var(--p-accent);
+  border-radius: 1cqw;
+}
+
+.navLinks {
+  display: inline-flex;
+  gap: 2.4cqw;
+
+  i {
+    width: 6cqw;
+    height: 1cqw;
+    background: var(--p-text);
+    border-radius: 1cqw;
+    opacity: 0.35;
+  }
+}
+
+.navCta {
+  width: 9cqw;
+  height: 3.2cqw;
+  background: var(--p-accent);
+  border-radius: 1.2cqw;
+}
+
+.stage {
+  flex: 1;
+  display: grid;
+  align-items: center;
+  gap: 3cqw;
+  min-height: 0;
+  padding: 1.5cqw 4cqw 4cqw;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.kicker {
+  width: 12cqw;
+  height: 1.3cqw;
+  margin-bottom: 2cqw;
+  background: var(--p-accent);
+  border-radius: 1cqw;
+}
+
+.heading {
+  display: block;
+  height: 3.4cqw;
+  margin-bottom: 1.3cqw;
+  background: var(--p-text);
+  border-radius: 1cqw;
+  opacity: 0.94;
+}
+
+.line {
+  display: block;
+  width: 86%;
+  height: 1.2cqw;
+  margin-bottom: 0.9cqw;
+  background: var(--p-text);
+  border-radius: 0.6cqw;
+  opacity: 0.28;
+}
+
+.buttons {
+  display: flex;
+  gap: 1.4cqw;
+  margin-top: 2cqw;
+}
+
+.button,
+.buttonGhost {
+  width: 13cqw;
+  height: 3.8cqw;
+  border-radius: 1.3cqw;
+}
+
+.button {
+  background: var(--p-accent);
+}
+
+.buttonGhost {
+  box-shadow: inset 0 0 0 0.3cqw color-mix(in srgb, var(--p-text) 35%, transparent);
+}
+
+.bar {
+  display: block;
+  height: 1.1cqw;
+  margin-top: 1cqw;
+  background: var(--p-text);
+  border-radius: 0.6cqw;
+  opacity: 0.45;
+}
+
+.card {
+  padding: 2cqw;
+  background: var(--p-surface);
+  border-radius: 1.8cqw;
+  box-shadow: 0 0 0 0.25cqw color-mix(in srgb, var(--p-text) 10%, transparent);
+}
+
+.iconDot {
+  display: block;
+  width: 3.4cqw;
+  height: 3.4cqw;
+  margin-bottom: 1.6cqw;
+  background: var(--p-accent);
+  border-radius: 1.1cqw;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// ---------- Cafe ----------
+.cafe {
+  grid-template-columns: 1.1fr 1fr;
+}
+
+.cafeArt {
+  position: relative;
+  justify-self: center;
+  width: 34cqw;
+  height: 34cqw;
+}
+
+.plate {
+  position: absolute;
+  inset: 0;
+  background: var(--p-surface);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1.4cqw color-mix(in srgb, var(--p-accent) 28%, transparent),
+    0 2cqw 5cqw rgb(0 0 0 / 0.25);
+}
+
+.plateInner {
+  position: absolute;
+  inset: 5cqw;
+  background: radial-gradient(circle at 35% 30%, var(--p-accent) 0%, color-mix(in srgb, var(--p-accent) 55%, #000) 100%);
+  border-radius: 50%;
+}
+
+.bean,
+.beanSmall {
+  position: absolute;
+  background: var(--p-accent2);
+  border-radius: 50%;
+}
+
+.bean {
+  top: -1cqw;
+  right: -1cqw;
+  width: 8cqw;
+  height: 8cqw;
+}
+
+.beanSmall {
+  bottom: 1cqw;
+  left: -2cqw;
+  width: 4.6cqw;
+  height: 4.6cqw;
+  opacity: 0.85;
+}
+
+// ---------- Clinic ----------
+.clinic {
+  grid-template-rows: auto auto;
+  align-content: center;
+  gap: 4cqw;
+}
+
+.bookBar {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  width: 78%;
+  margin-top: 1.4cqw;
+  padding: 1.4cqw;
+  background: var(--p-surface);
+  border-radius: 2cqw;
+  box-shadow: 0 0 0 0.25cqw color-mix(in srgb, var(--p-text) 10%, transparent);
+
+  span {
+    flex: 1;
+    height: 3.2cqw;
+    background: color-mix(in srgb, var(--p-text) 8%, transparent);
+    border-radius: 1.1cqw;
+  }
+
+  i {
+    width: 10cqw;
+    height: 3.2cqw;
+    background: var(--p-accent);
+    border-radius: 1.1cqw;
+  }
+}
+
+.cards3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2cqw;
+}
+
+// ---------- Store ----------
+.store {
+  grid-template-rows: auto 1fr;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.storeHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pill {
+  width: 14cqw;
+  height: 3.2cqw;
+  background: var(--p-text);
+  border-radius: 2cqw;
+  opacity: 0.12;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2cqw;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+}
+
+.productImage {
+  flex: 1;
+  min-height: 12cqw;
+  background: var(--p-surface);
+  border-radius: 1.6cqw;
+  box-shadow: 0 0 0 0.25cqw color-mix(in srgb, var(--p-text) 10%, transparent);
+
+  &[data-variant="0"] {
+    background: linear-gradient(160deg, var(--p-accent) 0%, color-mix(in srgb, var(--p-accent) 40%, var(--p-surface)) 100%);
+  }
+
+  &[data-variant="1"] {
+    background: linear-gradient(200deg, var(--p-accent2) 0%, color-mix(in srgb, var(--p-accent2) 35%, var(--p-surface)) 100%);
+  }
+
+  &[data-variant="2"] {
+    background: linear-gradient(140deg, color-mix(in srgb, var(--p-text) 85%, var(--p-surface)), var(--p-surface));
+  }
+
+  &[data-variant="3"] {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--p-accent) 55%, var(--p-surface)), var(--p-surface));
+  }
+}
+
+// ---------- Corporate ----------
+.corporate {
+  grid-template-columns: 1.05fr 1fr;
+}
+
+.corpArt {
+  position: relative;
+  padding: 2.5cqw;
+  background: var(--p-surface);
+  border-radius: 2cqw;
+  box-shadow: 0 0 0 0.25cqw color-mix(in srgb, var(--p-text) 12%, transparent);
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.route {
+  stroke: var(--p-accent);
+  stroke-width: 2;
+  stroke-dasharray: 3 5;
+  stroke-linecap: round;
+}
+
+.node {
+  fill: var(--p-text);
+  opacity: 0.8;
+}
+
+.nodeAccent {
+  fill: var(--p-accent2);
+}
+
+.statFloat {
+  position: absolute;
+  right: 2cqw;
+  bottom: -2cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8cqw;
+  padding: 1.6cqw 2cqw;
+  background: var(--p-bg);
+  border-radius: 1.6cqw;
+  box-shadow: 0 0 0 0.3cqw var(--p-accent2);
+
+  b {
+    width: 8cqw;
+    height: 2.4cqw;
+    background: var(--p-accent2);
+    border-radius: 0.8cqw;
+  }
+
+  span {
+    width: 11cqw;
+    height: 1cqw;
+    background: var(--p-text);
+    border-radius: 0.6cqw;
+    opacity: 0.4;
+  }
+}
+
+// ---------- Studio ----------
+.studio {
+  grid-template-columns: 1fr 1.05fr;
+}
+
+.timetable {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6cqw;
+  padding: 2.2cqw;
+  background: var(--p-surface);
+  border-radius: 2cqw;
+  box-shadow: 0 0 0 0.25cqw color-mix(in srgb, var(--p-text) 10%, transparent);
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  gap: 1.6cqw;
+}
+
+.time {
+  width: 5cqw;
+  height: 1.2cqw;
+  background: var(--p-text);
+  border-radius: 0.6cqw;
+  opacity: 0.35;
+}
+
+.slotBar {
+  height: 3.6cqw;
+  background: color-mix(in srgb, var(--p-accent) 22%, transparent);
+  border-left: 0.6cqw solid var(--p-accent);
+  border-radius: 1cqw;
+}
+
+.slotPill {
+  width: 5cqw;
+  height: 2.2cqw;
+  margin-left: auto;
+  background: color-mix(in srgb, var(--p-text) 12%, transparent);
+  border-radius: 2cqw;
+
+  &[data-active="true"] {
+    background: var(--p-accent2);
+  }
+}
+
+// ---------- Fintech ----------
+.fintech {
+  grid-template-columns: 1fr 1.15fr;
+}
+
+.dash {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6cqw;
+  padding: 2cqw;
+  background: var(--p-surface);
+  border-radius: 2cqw;
+  box-shadow: 0 0 0 0.25cqw color-mix(in srgb, var(--p-text) 12%, transparent);
+
+  svg {
+    width: 100%;
+    height: 15cqw;
+  }
+}
+
+.dashTop {
+  display: flex;
+  gap: 1.2cqw;
+
+  span {
+    width: 8cqw;
+    height: 1.2cqw;
+    background: var(--p-text);
+    border-radius: 0.6cqw;
+    opacity: 0.35;
+
+    &:first-child {
+      background: var(--p-accent);
+      opacity: 1;
+    }
+  }
+}
+
+.area {
+  fill: color-mix(in srgb, var(--p-accent) 18%, transparent);
+}
+
+.chartLine {
+  fill: none;
+  stroke: var(--p-accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.dashStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4cqw;
+
+  i {
+    height: 4.4cqw;
+    background: color-mix(in srgb, var(--p-text) 8%, transparent);
+    border-radius: 1.2cqw;
+
+    &:last-child {
+      background: color-mix(in srgb, var(--p-accent2) 30%, transparent);
+    }
+  }
+}

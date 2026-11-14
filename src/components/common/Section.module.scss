@@ -1,0 +1,37 @@
+.section {
+  position: relative;
+  // Own stacking context, so a BackdropGlow (z-index: -1) paints above this section's
+  // background but behind its content, and never leaks behind the page.
+  isolation: isolate;
+  scroll-margin-top: calc(var(--nav-height) + 8px);
+}
+
+.space-default {
+  @include section-y;
+}
+
+.space-tight {
+  @include section-y(0.65);
+}
+
+.space-loose {
+  @include section-y(1.2);
+}
+
+// For sections whose children bring their own vertical padding.
+.space-none {
+  padding-block: 0;
+}
+
+.default {
+  background: transparent;
+}
+
+.muted {
+  background: color-mix(in srgb, var(--card) 55%, transparent);
+  border-block: 1px solid var(--border);
+}
+
+.divider {
+  border-top: 1px solid var(--border);
+}

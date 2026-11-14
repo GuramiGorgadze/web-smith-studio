@@ -1,0 +1,40 @@
+{
+  "name": "web-smith-studio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Marketing site for Web Smith Studio, built with React, Radix UI primitives and SCSS modules.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/i18n.test.js tests/content.test.js tests/estimator.test.js tests/server-contract.test.js",
+    "start": "npm --prefix server start",
+    "server:install": "npm --prefix server install",
+    "server:dev": "npm --prefix server run dev",
+    "server:test": "npm --prefix server test",
+    "server:emails": "npm --prefix server run preview:emails",
+    "server:send-test": "npm --prefix server run send:test --"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0",
+    "@fontsource-variable/noto-sans-georgian": "^5.3.0",
+    "@hookform/resolvers": "^7.0.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.70.0",
+    "radix-ui": "^1.8.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-hook-form": "^7.91.0",
+    "react-router-dom": "^7.18.5",
+    "sonner": "^2.0.8",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.2.1",
+    "sass": "^1.108.1",
+    "vite": "^8.3.6"
+  }
+}

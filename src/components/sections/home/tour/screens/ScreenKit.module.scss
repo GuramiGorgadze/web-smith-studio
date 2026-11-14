@@ -1,0 +1,126 @@
+@include kf-fade-in;
+
+// Shared building blocks for the illustrated browser screens in the "how we work" tour.
+// Sizes use cqw (1% of the screen width) so each illustration scales with its window.
+
+.canvas {
+  container-type: inline-size;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  gap: 2.4cqw;
+  padding: 3.4cqw;
+  animation: fadeIn dur("slower") $ease-out both;
+
+  @include reduced-motion {
+    animation: none;
+  }
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8cqw;
+  min-width: 0;
+  padding: 2.4cqw;
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--background) 82%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 2.2cqw;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 1.55cqw;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  color: var(--subtle);
+}
+
+.title {
+  font-size: 2.5cqw;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.text {
+  font-size: 1.8cqw;
+  line-height: 1.45;
+  color: var(--muted-foreground);
+}
+
+.strong {
+  font-size: 2cqw;
+  font-weight: 550;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1cqw;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8cqw;
+  padding: 0.8cqw 1.7cqw;
+  font-size: 1.7cqw;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--muted-foreground);
+  border: 1px solid var(--border-strong);
+  border-radius: 9cqw;
+}
+
+.pillActive {
+  color: var(--foreground);
+  background: var(--accent-soft);
+  border-color: var(--brand-periwinkle);
+}
+
+.bar {
+  display: block;
+  height: 1.2cqw;
+  background: var(--muted);
+  border-radius: 1cqw;
+}
+
+.barAccent {
+  background-image: var(--gradient-brand);
+}
+
+.check {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.8cqw;
+  height: 2.8cqw;
+  color: #ffffff;
+  background-image: var(--gradient-brand);
+  border-radius: 50%;
+
+  svg {
+    width: 62%;
+    height: 62%;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 1.4cqw;
+}
+
+.spread {
+  justify-content: space-between;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}

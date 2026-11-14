@@ -1,0 +1,27 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+  border-radius: radius("xs");
+  transition: color dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  @include hover-device {
+    &:hover {
+      color: var(--foreground);
+    }
+
+    &:hover .icon {
+      transform: translateX(3px);
+    }
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  transition: transform dur("base") $ease-out;
+}

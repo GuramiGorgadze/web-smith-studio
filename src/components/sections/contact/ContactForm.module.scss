@@ -1,0 +1,157 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+  min-width: 0;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  font-size: var(--text-xl);
+  font-weight: 550;
+  letter-spacing: -0.025em;
+}
+
+.step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--brand-periwinkle) 35%, transparent);
+  border-radius: 50%;
+}
+
+.row {
+  display: grid;
+  gap: 1.25rem;
+
+  @include up("sm") {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+
+  // Line the box up with the first line of text rather than the middle of a two-line label.
+  > button {
+    flex: none;
+    margin-top: 0.15rem;
+  }
+}
+
+.checkLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--foreground);
+  cursor: pointer;
+
+  > span:first-child {
+    font-weight: 450;
+  }
+}
+
+.checkHint {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+.link {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.2em;
+  border-radius: radius("xs");
+  transition: text-decoration-color dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  @include hover-device {
+    &:hover {
+      text-decoration-color: var(--accent);
+    }
+  }
+}
+
+.error {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--destructive);
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.consent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.submitError {
+  padding: 0.85rem 1rem;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--destructive);
+  background: color-mix(in srgb, var(--destructive) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--destructive) 35%, transparent);
+  border-radius: radius("md");
+}
+
+.submit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+
+  @include up("sm") {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+  }
+}
+
+.note {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--subtle);
+}

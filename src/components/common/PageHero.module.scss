@@ -1,0 +1,43 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-top: calc(var(--nav-height) + clamp(3rem, 8vw, 6.5rem));
+  padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 50rem;
+}
+
+.center .copy {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5.6vw, 4.25rem);
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+}
+
+.description {
+  max-width: 40rem;
+  font-size: var(--text-lg);
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.center .actions {
+  justify-content: center;
+}

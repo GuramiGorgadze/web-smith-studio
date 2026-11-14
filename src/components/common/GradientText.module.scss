@@ -1,0 +1,4 @@
+.gradient {
+  @include gradient-text;
+  padding-bottom: 0.06em; // keeps descenders from being clipped by background-clip
+}

@@ -1,0 +1,11 @@
+.band {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+}
+
+.head {
+  display: flex;
+  justify-content: center;
+}

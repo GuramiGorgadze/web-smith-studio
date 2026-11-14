@@ -1,0 +1,6 @@
+// Injected into every SCSS file by vite.config.js (additionalData).
+// This file must never emit CSS: it only forwards tokens, functions, mixins and keyframe mixins.
+@forward "tokens";
+@forward "functions";
+@forward "mixins";
+@forward "keyframes";

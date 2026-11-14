@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="__DEFAULT_LOCALE__" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Smith Studio: Websites that work as hard as you do</title>
+    <meta
+      name="description"
+      content="Web Smith Studio designs and builds fast, beautiful, conversion-focused websites for local shops and international brands, from first sketch to launch day and beyond."
+    />
+    <meta name="theme-color" content="#0d0c10" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Web Smith Studio" />
+    <meta property="og:title" content="Web Smith Studio: Websites that work as hard as you do" />
+    <meta
+      property="og:description"
+      content="Fast, beautiful, conversion-focused websites for local shops and international brands."
+    />
+    <meta property="og:image" content="__SITE_URL__/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Web Smith Studio: websites that work as hard as you do." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script>
+      (function () {
+        // Language: the first part of the address names it (/ka/work), otherwise it is the default language.
+        // React sets the same value once it starts; doing it here means the right fonts and quotes from the first paint.
+        try {
+          var lang = "__DEFAULT_LOCALE__";
+          var first = location.pathname.split("/")[1];
+          if (first && "__LOCALES__".split(",").indexOf(first.toLowerCase()) > -1) lang = first.toLowerCase();
+          document.documentElement.setAttribute("lang", lang);
+        } catch (e) {}
+
+        try {
+          var stored = localStorage.getItem("wss-theme");
+          var pref = stored === "light" || stored === "dark" || stored === "system" ? stored : "dark";
+          var resolved =
+            pref === "system"
+              ? window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark"
+              : pref;
+          document.documentElement.setAttribute("data-theme", resolved);
+          document.documentElement.style.colorScheme = resolved;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", resolved === "light" ? "#fafaff" : "#0d0c10");
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="font-family: system-ui, sans-serif; padding: 2rem; color: #f5f5fa; background: #0d0c10;">
+        <p>
+          Web Smith Studio builds fast, beautiful websites for businesses of every size. This site needs JavaScript
+          to run. To reach us right now, email __CONTACT_EMAIL__ or visit again with JavaScript enabled.
+        </p>
+        <p lang="ka" style="margin-top: 1rem;">
+          Web Smith Studio ქმნის სწრაფ და ლამაზ ვებსაიტებს ნებისმიერი ზომის ბიზნესისთვის. საიტის გასაშვებად საჭიროა
+          JavaScript. ჩვენთან დასაკავშირებლად მოგვწერეთ: __CONTACT_EMAIL__ ან გახსენით საიტი თავიდან, ჩართული
+          JavaScript-ით.
+        </p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

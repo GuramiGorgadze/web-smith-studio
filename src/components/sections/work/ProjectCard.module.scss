@@ -1,0 +1,105 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.media {
+  position: relative;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: radius("xl");
+  box-shadow: var(--shadow-md);
+  transition:
+    transform dur("slow") $ease-out,
+    border-color dur("base") $ease-out,
+    box-shadow dur("slow") $ease-out;
+
+  .card:hover & {
+    border-color: color-mix(in srgb, var(--brand-periwinkle) 60%, var(--border-strong));
+    box-shadow:
+      var(--shadow-lg),
+      0 20px 60px -30px var(--primary-glow);
+    transform: translateY(-4px);
+  }
+
+  @include reduced-motion {
+    .card:hover & {
+      transform: none;
+    }
+  }
+}
+
+.open {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #ffffff;
+  background-image: var(--gradient-brand);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-4px, 4px) scale(0.9);
+  transition:
+    opacity dur("base") $ease-out,
+    transform dur("base") $ease-out;
+
+  .card:hover &,
+  .card:focus-within & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: var(--text-2xl);
+  letter-spacing: -0.03em;
+}
+
+// Stretched link makes the whole card clickable
+.link {
+  color: var(--foreground);
+  border-radius: radius("xs");
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible::after {
+    border-radius: radius("xl");
+    outline: 2px solid var(--ring);
+    outline-offset: 6px;
+  }
+}
+
+.summary {
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+
+.services {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.01em;
+  color: var(--subtle);
+}

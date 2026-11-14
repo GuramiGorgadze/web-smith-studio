@@ -1,0 +1,43 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 46rem;
+}
+
+.left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  margin-bottom: 0.25rem;
+}
+
+.title {
+  font-size: var(--text-4xl);
+}
+
+.description {
+  max-width: 40rem;
+  font-size: var(--text-lg);
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.center .actions {
+  justify-content: center;
+}

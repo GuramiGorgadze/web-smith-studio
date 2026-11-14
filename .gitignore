@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+.env.local
+.DS_Store
+*.log
+
+# The mail server: saved email previews and its settings (never commit real passwords).
+.previews
+server/.env

@@ -1,0 +1,55 @@
+@include kf-pulse-dot;
+
+.base {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.7rem;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  max-width: 100%;
+  text-wrap: balance;
+  border: 1px solid transparent;
+  border-radius: radius("pill");
+}
+
+.default {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--brand-periwinkle) 28%, transparent);
+}
+
+.outline {
+  color: var(--muted-foreground);
+  border-color: var(--border-strong);
+}
+
+.solid {
+  color: var(--primary-foreground);
+  background-image: var(--gradient-brand);
+}
+
+.success {
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  border-color: color-mix(in srgb, var(--success) 28%, transparent);
+}
+
+.muted {
+  color: var(--muted-foreground);
+  background: var(--muted);
+  border-color: var(--border);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+
+  @include motion-ok {
+    animation: pulseDot 2.2s ease-out infinite;
+  }
+}

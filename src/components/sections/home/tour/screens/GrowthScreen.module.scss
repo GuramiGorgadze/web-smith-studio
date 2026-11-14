@@ -1,0 +1,98 @@
+.layout {
+  grid-template-rows: auto 1fr auto;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2cqw;
+}
+
+.tile {
+  gap: 0.6cqw;
+  padding: 1.8cqw 2cqw;
+}
+
+.value {
+  font-size: 3.2cqw;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--foreground);
+}
+
+.delta {
+  font-family: var(--font-mono);
+  font-size: 1.5cqw;
+  color: var(--success);
+}
+
+.chart {
+  min-height: 0;
+}
+
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6cqw;
+  font-size: 1.6cqw;
+  font-weight: 500;
+  color: var(--success);
+
+  svg {
+    width: 2cqw;
+    height: 2cqw;
+  }
+}
+
+.svg {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+}
+
+.grid {
+  stroke: var(--border);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.area {
+  fill: color-mix(in srgb, var(--brand-indigo) 20%, transparent);
+}
+
+.line {
+  fill: none;
+  stroke: var(--brand-periwinkle);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 600;
+
+  @include motion-ok {
+    animation: lineDraw 1.8s $ease-out both;
+  }
+}
+
+.tip {
+  padding: 1.6cqw 2.2cqw;
+}
+
+.tipBadge {
+  flex-shrink: 0;
+  padding: 0.6cqw 1.4cqw;
+  font-size: 1.5cqw;
+  font-weight: 600;
+  color: #ffffff;
+  background-image: var(--gradient-brand);
+  border-radius: 9cqw;
+}
+
+@keyframes lineDraw {
+  from {
+    stroke-dashoffset: 600;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

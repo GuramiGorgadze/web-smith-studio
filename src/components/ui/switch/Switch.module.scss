@@ -1,0 +1,47 @@
+.root {
+  position: relative;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 1.5rem;
+  padding: 0;
+  background: var(--muted);
+  border: 1px solid var(--border-strong);
+  border-radius: radius("pill");
+  cursor: pointer;
+  transition:
+    background-color dur("base") $ease-out,
+    border-color dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  // Enlarge the touch target without changing the visual size
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -0.65rem -0.35rem;
+  }
+
+  &[data-state="checked"] {
+    background-image: var(--gradient-brand);
+    border-color: transparent;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.thumb {
+  display: block;
+  width: 1.125rem;
+  height: 1.125rem;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
+  transform: translateX(0.18rem);
+  transition: transform dur("base") $ease-spring;
+
+  &[data-state="checked"] {
+    transform: translateX(1.37rem);
+  }
+}

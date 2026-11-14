@@ -1,0 +1,22 @@
+node_modules
+server/node_modules
+dist
+
+.git
+.gitignore
+.DS_Store
+*.log
+
+# Settings and saved previews never go into an image.
+.env
+.env.*
+server/.env
+server/.env.*
+server/.previews
+
+# Not needed to build or run.
+design
+Dockerfile
+.dockerignore
+server/tests
+server/scripts

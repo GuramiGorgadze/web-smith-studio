@@ -1,0 +1,38 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--foreground);
+  border-radius: radius("sm");
+  @include focus-visible-ring(4px);
+
+  svg {
+    flex-shrink: 0;
+    transition: transform dur("slow") $ease-out;
+  }
+
+  @include hover-device {
+    &:hover svg {
+      transform: translateY(-1px) scale(1.04);
+    }
+  }
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.32em;
+  font-size: 1.0625rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.primary {
+  font-weight: 650;
+}
+
+.secondary {
+  font-weight: 400;
+  color: var(--muted-foreground);
+}

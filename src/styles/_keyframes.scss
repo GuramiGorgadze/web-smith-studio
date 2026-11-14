@@ -1,0 +1,99 @@
+// Shared keyframes, written as mixins on purpose.
+//
+// CSS Modules renames every keyframe per file (fadeIn becomes _fadeIn_ab12cd), and it renames the
+// `animation` references to match. A module can therefore only use keyframes that are defined in
+// the same file; a keyframe in a global stylesheet is never found, and Radix exit animations then
+// wait forever for an "animationend" that never comes.
+//
+// Usage: put `@include kf-scale-in;` at the top of the module, then `animation: scaleIn ...`.
+
+@mixin kf-fade-in {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin kf-scale-in {
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@mixin kf-slide-in-right {
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
+@mixin kf-slide-out-right {
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+}
+
+@mixin kf-spin {
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@mixin kf-pulse-dot {
+  @keyframes pulseDot {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand-periwinkle) 60%, transparent);
+    }
+    70% {
+      box-shadow: 0 0 0 8px transparent;
+    }
+    100% {
+      box-shadow: 0 0 0 0 transparent;
+    }
+  }
+}
+
+@mixin kf-marquee {
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@mixin kf-float-y {
+  @keyframes floatY {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+}

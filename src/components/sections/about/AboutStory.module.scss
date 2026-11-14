@@ -1,0 +1,89 @@
+.layout {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: start;
+
+  @include up("lg") {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 40rem;
+
+  p {
+    font-size: var(--text-lg);
+    line-height: 1.75;
+    color: var(--muted-foreground);
+  }
+
+  // The first paragraph is the one people read: give it a little more presence.
+  p:first-child {
+    font-size: var(--text-xl);
+    line-height: 1.65;
+    color: var(--foreground);
+  }
+}
+
+.aside {
+  min-width: 0;
+
+  @include up("lg") {
+    position: sticky;
+    top: calc(var(--nav-height) + 2rem);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.75rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: radius("2xl");
+}
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-block: 1.1rem;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  & + & {
+    border-top: 1px solid var(--border);
+  }
+}
+
+.label {
+  @include eyebrow;
+  font-weight: 450;
+}
+
+.value {
+  margin: 0;
+  font-size: var(--text-lg);
+  line-height: 1.5;
+  color: var(--foreground);
+}

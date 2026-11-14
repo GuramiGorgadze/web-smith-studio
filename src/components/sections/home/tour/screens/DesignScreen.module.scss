@@ -1,0 +1,179 @@
+.layout {
+  grid-template-columns: 1.7fr 1fr;
+  align-items: stretch;
+}
+
+.desktop {
+  gap: 2.6cqw;
+  overflow: hidden;
+}
+
+.siteNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navBars {
+  display: inline-flex;
+  gap: 1.8cqw;
+
+  i {
+    width: 5cqw;
+    height: 1cqw;
+    background: var(--border-strong);
+    border-radius: 1cqw;
+  }
+}
+
+.navButton {
+  width: 8cqw;
+  height: 2.8cqw;
+  background-image: var(--gradient-brand);
+  border-radius: 1cqw;
+}
+
+.hero {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 2cqw;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2cqw;
+}
+
+.kicker {
+  width: 11cqw;
+  height: 1.2cqw;
+  background: var(--brand-periwinkle);
+  border-radius: 1cqw;
+}
+
+.headline {
+  display: block;
+  height: 3.2cqw;
+  background: var(--foreground);
+  border-radius: 1cqw;
+  opacity: 0.92;
+}
+
+.cta {
+  width: 12cqw;
+  height: 3.6cqw;
+  margin-top: 0.8cqw;
+  background-image: var(--gradient-brand);
+  border-radius: 1.3cqw;
+  box-shadow: 0 1cqw 3cqw -1cqw var(--primary-glow);
+}
+
+.art {
+  position: relative;
+  align-self: stretch;
+  min-height: 16cqw;
+}
+
+.orb {
+  position: absolute;
+  inset: 8% 6% 8% 14%;
+  background: radial-gradient(circle at 30% 25%, var(--brand-lavender), var(--brand-blue) 70%);
+  border-radius: 38% 62% 55% 45% / 48% 40% 60% 52%;
+  box-shadow: 0 2cqw 6cqw -2cqw var(--primary-glow);
+
+  @include motion-ok {
+    animation: orbMorph 9s ease-in-out infinite alternate;
+  }
+}
+
+.orbSmall {
+  position: absolute;
+  right: 0;
+  bottom: 2%;
+  width: 6cqw;
+  height: 6cqw;
+  background: var(--brand-sky);
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+.side {
+  display: grid;
+  grid-template-rows: 1.5fr auto;
+  gap: 2.4cqw;
+  min-width: 0;
+}
+
+.phoneWrap {
+  align-items: center;
+  justify-content: center;
+  padding: 1.6cqw;
+  overflow: hidden;
+}
+
+.phone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1cqw;
+  width: 62%;
+  height: 112%;
+  margin-top: 6cqw;
+  padding: 4cqw 1.8cqw 2cqw;
+  background: var(--card);
+  border: 0.45cqw solid var(--border-strong);
+  border-radius: 3.4cqw;
+}
+
+.phoneNotch {
+  position: absolute;
+  top: 1cqw;
+  left: 50%;
+  width: 6cqw;
+  height: 1cqw;
+  background: var(--border-strong);
+  border-radius: 1cqw;
+  transform: translateX(-50%);
+}
+
+.phoneCard {
+  flex: 1;
+  margin-top: 0.6cqw;
+  background: var(--gradient-brand-soft);
+  border: 1px solid var(--border);
+  border-radius: 1.6cqw;
+}
+
+.tokens {
+  gap: 1.6cqw;
+}
+
+.swatches {
+  display: flex;
+  gap: 0.9cqw;
+}
+
+.swatch {
+  flex: 1;
+  height: 4cqw;
+  border: 1px solid var(--border-strong);
+  border-radius: 1.2cqw;
+}
+
+.specimen {
+  font-size: 4.4cqw;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--foreground);
+}
+
+@keyframes orbMorph {
+  to {
+    border-radius: 58% 42% 40% 60% / 44% 56% 44% 56%;
+    transform: rotate(8deg) scale(1.04);
+  }
+}

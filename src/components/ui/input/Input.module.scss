@@ -1,0 +1,49 @@
+.field {
+  display: block;
+  width: 100%;
+  min-height: 2.875rem;
+  padding: 0.7rem 0.95rem;
+  font-size: max(1rem, 16px); // 16px+ prevents iOS zoom-on-focus
+  line-height: 1.4;
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  border: 1px solid var(--input);
+  border-radius: radius("md");
+  transition:
+    border-color dur("base") $ease-out,
+    box-shadow dur("base") $ease-out,
+    background-color dur("base") $ease-out;
+
+  &::placeholder {
+    color: var(--subtle);
+  }
+
+  @include hover-device {
+    &:hover:not(:disabled) {
+      border-color: var(--border-strong);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 28%, transparent);
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--destructive);
+
+    &:focus-visible {
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--destructive) 26%, transparent);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.55;
+  }
+}
+
+.textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+}

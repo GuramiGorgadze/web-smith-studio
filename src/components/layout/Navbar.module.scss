@@ -1,0 +1,81 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: z("nav");
+  height: var(--nav-height);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color dur("base") $ease-out,
+    border-color dur("base") $ease-out,
+    backdrop-filter dur("base") $ease-out;
+}
+
+.scrolled {
+  @include glass(16px);
+  border-bottom-color: var(--border);
+}
+
+.bar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
+
+  @include down("xs") {
+    gap: 0.75rem;
+  }
+
+  @include up("lg") {
+    grid-template-columns: 1fr auto 1fr;
+  }
+}
+
+.desktop {
+  display: none;
+  justify-self: center;
+
+  @include up("lg") {
+    display: block;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 0.6rem;
+}
+
+// Phones: the header keeps the logo, the language and the menu button. The theme switch moves into the menu.
+.theme {
+  display: inline-flex;
+
+  @include down("xs") {
+    display: none;
+  }
+}
+
+.cta {
+  display: none;
+
+  @include up("sm") {
+    display: inline-flex;
+  }
+}
+
+// 1024-1280px: the bar is crowded (Georgian labels are longer), so it packs closer.
+@include between("lg", "xl") {
+  .bar {
+    grid-template-columns: auto 1fr auto;
+    gap: 0.75rem;
+  }
+
+  .actions {
+    gap: 0.4rem;
+  }
+
+  .actions .cta {
+    padding-inline: 1rem;
+  }
+}

@@ -1,0 +1,140 @@
+.layout {
+  grid-template-columns: 1.4fr 1fr;
+  align-items: stretch;
+}
+
+.editor {
+  gap: 1.4cqw;
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  gap: 1cqw;
+  padding-bottom: 1.2cqw;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab,
+.tabActive {
+  padding: 0.6cqw 1.5cqw;
+  font-family: var(--font-mono);
+  font-size: 1.5cqw;
+  border-radius: 1cqw;
+  color: var(--subtle);
+}
+
+.tabActive {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+.code {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 1.62cqw;
+  line-height: 1.75;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.line {
+  display: flex;
+  gap: 2cqw;
+}
+
+.number {
+  width: 2cqw;
+  text-align: right;
+  color: var(--subtle);
+  opacity: 0.6;
+  user-select: none;
+}
+
+.kw {
+  color: var(--brand-periwinkle);
+}
+
+.fn {
+  color: var(--brand-sky);
+}
+
+.str {
+  color: var(--brand-orchid);
+}
+
+.tag {
+  color: var(--accent);
+}
+
+.attr {
+  color: var(--brand-sky);
+}
+
+.pun {
+  color: var(--muted-foreground);
+}
+
+.audit {
+  justify-content: center;
+}
+
+.rings {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.2cqw 1.4cqw;
+}
+
+.ring {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8cqw;
+}
+
+.svg {
+  width: 11cqw;
+  height: 11cqw;
+  transform: rotate(-90deg);
+}
+
+.track,
+.progress {
+  fill: none;
+  stroke-width: 3;
+}
+
+.track {
+  stroke: color-mix(in srgb, var(--success) 18%, transparent);
+}
+
+.progress {
+  stroke: var(--success);
+  stroke-linecap: round;
+
+  @include motion-ok {
+    animation: ringDraw 1.4s $ease-out both;
+  }
+}
+
+.score {
+  position: absolute;
+  top: 4.1cqw;
+  font-size: 3cqw;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--success);
+}
+
+.ringLabel {
+  font-size: 1.5cqw;
+  color: var(--muted-foreground);
+  text-align: center;
+}
+
+@keyframes ringDraw {
+  from {
+    stroke-dasharray: 0 100;
+  }
+}

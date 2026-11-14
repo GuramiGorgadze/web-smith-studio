@@ -1,0 +1,99 @@
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  padding: 0;
+  list-style: none;
+
+  @include up("md") {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include up("lg") {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.cell {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.75rem;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.eyebrow {
+  @include eyebrow;
+  font-size: var(--text-xs);
+}
+
+.title {
+  font-size: var(--text-xl);
+  letter-spacing: -0.025em;
+}
+
+// Stretched link: the whole card is clickable, while the markup stays a single link
+.link {
+  color: var(--foreground);
+  border-radius: radius("xs");
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: radius("xl");
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible::after {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+.summary {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.price {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--subtle);
+}
+
+.arrow {
+  color: var(--muted-foreground);
+  transition:
+    transform dur("base") $ease-out,
+    color dur("base") $ease-out;
+
+  .card:hover & {
+    color: var(--accent);
+    transform: translateX(4px);
+  }
+}

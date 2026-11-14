@@ -1,0 +1,80 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-top: calc(var(--nav-height) + clamp(2rem, 5vw, 3.5rem));
+  padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  max-width: 52rem;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  border-radius: radius("xs");
+  transition: color dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  @include hover-device {
+    &:hover {
+      color: var(--foreground);
+    }
+  }
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.tagline {
+  max-width: 40rem;
+  font-size: var(--text-xl);
+  line-height: 1.55;
+  color: var(--muted-foreground);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.5rem;
+  margin: 0.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  dt {
+    @include eyebrow;
+    font-weight: 450;
+  }
+
+  dd {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--foreground);
+  }
+}
+
+.frame {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}

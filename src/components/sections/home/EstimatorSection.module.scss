@@ -1,0 +1,4 @@
+// The wrapper must not use overflow: hidden, because the result panel inside is position: sticky.
+.tool {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}

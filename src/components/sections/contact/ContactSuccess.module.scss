@@ -1,0 +1,75 @@
+@include kf-fade-in;
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-block: clamp(1rem, 4vw, 2.5rem);
+
+  @include motion-ok {
+    animation: fadeIn dur("slow") $ease-out;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--success) 35%, transparent);
+  border-radius: 50%;
+}
+
+.title {
+  font-size: var(--text-4xl);
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.body {
+  max-width: 34rem;
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: var(--muted-foreground);
+
+  strong {
+    font-weight: 500;
+    color: var(--foreground);
+  }
+}
+
+.email {
+  overflow-wrap: anywhere;
+}
+
+.link {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+  border-radius: radius("xs");
+  transition: text-decoration-color dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  @include hover-device {
+    &:hover {
+      text-decoration-color: var(--accent);
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}

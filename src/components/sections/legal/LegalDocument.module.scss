@@ -1,0 +1,132 @@
+.layout {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+
+  @include up("lg") {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    gap: clamp(3rem, 6vw, 5rem);
+  }
+}
+
+.toc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: radius("lg");
+
+  @include up("lg") {
+    position: sticky;
+    top: calc(var(--nav-height) + 2rem);
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+  }
+}
+
+.tocTitle {
+  @include eyebrow;
+  font-weight: 450;
+}
+
+.tocList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: toc;
+}
+
+.tocLink {
+  display: block;
+  padding: 0.4rem 0.6rem;
+  margin-inline: -0.6rem;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+  border-radius: radius("sm");
+  transition:
+    color dur("base") $ease-out,
+    background-color dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  @include hover-device {
+    &:hover {
+      color: var(--foreground);
+      background: var(--muted);
+    }
+  }
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 2.75rem);
+  min-width: 0;
+  max-width: 44rem;
+}
+
+.updated {
+  font-size: var(--text-sm);
+  color: var(--subtle);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  scroll-margin-top: calc(var(--nav-height) + 2rem);
+}
+
+.heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  font-size: var(--text-2xl);
+  letter-spacing: -0.03em;
+}
+
+.index {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.text {
+  font-size: var(--text-lg);
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+
+.contact {
+  padding-top: 1.75rem;
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  border-top: 1px solid var(--border);
+}
+
+.link {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+  border-radius: radius("xs");
+  transition: text-decoration-color dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  @include hover-device {
+    &:hover {
+      text-decoration-color: var(--accent);
+    }
+  }
+}

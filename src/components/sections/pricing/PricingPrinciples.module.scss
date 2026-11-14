@@ -1,0 +1,55 @@
+.grid {
+  display: grid;
+  gap: 1rem;
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  padding: 0;
+  list-style: none;
+
+  // Stacked cards stay a readable width on tablets instead of stretching edge to edge.
+  @include down("md") {
+    width: 100%;
+    max-width: 34rem;
+    margin-inline: auto;
+  }
+
+  @include up("md") {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.75rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: radius("xl");
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.number {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--subtle);
+}
+
+.title {
+  font-size: var(--text-xl);
+  letter-spacing: -0.025em;
+}
+
+.body {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}

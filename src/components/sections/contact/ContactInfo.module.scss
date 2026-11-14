@@ -1,0 +1,139 @@
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+
+  @include up("lg") {
+    position: sticky;
+    top: calc(var(--nav-height) + 2rem);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: radius("xl");
+}
+
+.title {
+  font-size: var(--text-xl);
+  letter-spacing: -0.025em;
+}
+
+.text {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 100%;
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--foreground);
+  border-radius: radius("xs");
+  transition: color dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  span {
+    overflow-wrap: anywhere;
+  }
+
+  svg {
+    flex: none;
+    color: var(--accent);
+  }
+
+  @include hover-device {
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+.copy {
+  margin-top: 0.15rem;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  gap: 0.85rem;
+}
+
+.number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--brand-periwinkle) 35%, transparent);
+  border-radius: 50%;
+}
+
+.stepTitle {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  font-weight: 550;
+  letter-spacing: -0.015em;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-inline: 0.25rem;
+}
+
+.linksTitle {
+  @include eyebrow;
+  font-weight: 450;
+}
+
+.linkList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+  color: var(--muted-foreground);
+  border-radius: radius("xs");
+  transition: color dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  @include hover-device {
+    &:hover {
+      color: var(--foreground);
+    }
+  }
+}

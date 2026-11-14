@@ -1,0 +1,58 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 2rem;
+  touch-action: none;
+  user-select: none;
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+}
+
+.track {
+  position: relative;
+  flex-grow: 1;
+  height: 6px;
+  overflow: hidden;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: radius("pill");
+}
+
+.range {
+  position: absolute;
+  height: 100%;
+  background-image: var(--gradient-brand);
+  border-radius: radius("pill");
+}
+
+.thumb {
+  display: block;
+  width: 1.375rem;
+  height: 1.375rem;
+  background: #ffffff;
+  border: 2px solid var(--brand-indigo);
+  border-radius: 50%;
+  box-shadow:
+    0 2px 8px rgb(0 0 0 / 0.35),
+    0 0 0 4px color-mix(in srgb, var(--brand-indigo) 18%, transparent);
+  cursor: grab;
+  transition:
+    transform dur("fast") $ease-out,
+    box-shadow dur("base") $ease-out;
+
+  &:active {
+    cursor: grabbing;
+    transform: scale(1.08);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 2px 8px rgb(0 0 0 / 0.35),
+      0 0 0 6px color-mix(in srgb, var(--ring) 40%, transparent);
+  }
+}

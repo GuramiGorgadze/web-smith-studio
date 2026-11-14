@@ -1,0 +1,108 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: radius("md");
+  transition:
+    background-color dur("base") $ease-out,
+    border-color dur("base") $ease-out;
+  @include focus-visible-ring;
+
+  @include up("lg") {
+    display: none;
+  }
+
+  @include hover-device {
+    &:hover {
+      background: var(--accent-soft);
+      border-color: var(--border-strong);
+    }
+  }
+}
+
+.nav {
+  flex: 1;
+  margin-top: 1.5rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.25rem;
+  padding: 0.5rem 0;
+  font-size: var(--text-2xl);
+  font-weight: 550;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
+  border-bottom: 1px solid var(--border);
+  @include focus-visible-ring(-2px);
+
+  svg {
+    color: var(--muted-foreground);
+  }
+}
+
+.sublist {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0.5rem 0 0.75rem 0.25rem;
+  list-style: none;
+}
+
+.sublink {
+  display: block;
+  padding: 0.55rem 0;
+  font-size: 0.9375rem;
+  color: var(--muted-foreground);
+  @include focus-visible-ring(-2px);
+
+  @include hover-device {
+    &:hover {
+      color: var(--foreground);
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.preferences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+// The header shows the theme switch from 480px up, so the menu only needs it on phones.
+.theme {
+  @include up("xs") {
+    display: none;
+  }
+}
+
+.cta {
+  width: 100%;
+}
+
+.email {
+  font-size: var(--text-sm);
+  text-align: center;
+  color: var(--muted-foreground);
+}

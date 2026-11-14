@@ -1,0 +1,179 @@
+@include kf-scale-in;
+
+.tour {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+// ---------- Step list (desktop) ----------
+.steps {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  min-height: clamp(11rem, 26vh, 15rem);
+  opacity: 0.45;
+  transition: opacity dur("slow") $ease-out;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.stepButton {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0.5rem 0;
+  text-align: left;
+  border-radius: radius("lg");
+  @include focus-visible-ring(6px);
+}
+
+.number {
+  flex-shrink: 0;
+  padding-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 450;
+  color: var(--subtle);
+  transition: color dur("slow") $ease-out;
+
+  .active & {
+    color: var(--accent);
+  }
+}
+
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 30rem;
+}
+
+.stepTitle {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--foreground);
+}
+
+.stepDescription {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+// ---------- Sticky stage ----------
+.stageWrap {
+  position: sticky;
+  top: calc(var(--nav-height) + 2.5rem);
+  align-self: start;
+  padding-block: 2rem;
+}
+
+.stage {
+  position: relative;
+}
+
+.chips {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.chipSlot {
+  position: absolute;
+  max-width: calc(100% - 1rem);
+  animation: scaleIn dur("slow") $ease-spring both;
+  animation-delay: calc(var(--i, 0) * 120ms + 150ms);
+
+  @include reduced-motion {
+    animation: none;
+  }
+}
+
+.slot0 {
+  top: -1.1rem;
+  left: -1.25rem;
+}
+
+// Straddles the top-right corner, over the empty end of the window's title bar, so it never covers a screen.
+.slot1 {
+  top: -1.1rem;
+  right: -1rem;
+}
+
+.slot2 {
+  bottom: -1.1rem;
+  left: 8%;
+}
+
+// ---------- Stacked (below 1024px) ----------
+.stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: clamp(2.5rem, 6vw, 4rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .stage {
+    padding-block: 0.5rem;
+  }
+
+  // The two chips on the top edge share its width, so long labels wrap instead of covering each other.
+  .slot0 {
+    left: 0.5rem;
+    max-width: calc(50% - 0.75rem);
+  }
+
+  .slot1 {
+    right: 0.5rem;
+    max-width: calc(50% - 0.75rem);
+  }
+
+  .slot2 {
+    left: 1rem;
+  }
+}
+
+.cardCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.cardTitle {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.card .number {
+  padding-top: 0;
+  color: var(--accent);
+}
