@@ -13,19 +13,19 @@ export const EMPTY_CONTACT_VALUES = {
   website: "",
 };
 
-/** Pick the budget bracket that contains the middle of an estimated range. */
+/** Pick the budget bracket that contains the middle of an estimated range. Ids as in contact.budgetOptions. */
 function budgetForEstimate(result) {
   const middle = (result.low + result.high) / 2;
-  if (middle < 2000) return "under-2k";
-  if (middle < 5000) return "2k-5k";
-  if (middle < 10000) return "5k-10k";
-  return "10k-plus";
+  if (middle < 500) return "under-500";
+  if (middle < 1000) return "500-1k";
+  if (middle < 2000) return "1k-2k";
+  return "2k-plus";
 }
 
 /**
  * Starting values for the form, taken from the page address.
  *
- * - `/contact?type=store&care=yes`      (services and pricing buttons)
+ * - `/contact?type=landing&care=yes`    (services and package buttons)
  * - `/contact?type=business&pages=6...` (the "Try it live" estimator)
  *
  * Unknown values are ignored, so a hand-edited link can never put the form in a broken state.
@@ -43,7 +43,6 @@ export function getInitialContactState(params, i18n) {
       ...EMPTY_CONTACT_VALUES,
       projectType,
       budget: estimate ? budgetForEstimate(estimate.result) : "unsure",
-      timeline: estimate?.input.timeline === "priority" ? "asap" : "flexible",
       care: params.get("care") === "yes",
     },
     estimate: estimate ? describeEstimate(estimate.input, estimate.result, i18n) : null,

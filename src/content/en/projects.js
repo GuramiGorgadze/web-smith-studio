@@ -1,16 +1,53 @@
-// Concept projects: fictional businesses designed to show the range of what we build.
-// They are labelled "Concept" in the interface. Replace them with real case studies as you ship.
-// `slug`, `category`, `year`, `isConcept`, `stack`, `layout` and `palette` are the same in every language;
-// the rest is words. This file has no imports on purpose: vite.config.js reads the slugs from it.
+// Projects shown on the work pages. FITOFARM-2024 is a real client project; the six concept projects below it
+// (fictional businesses that showed our approach before we had client work) are switched off for now.
+// Uncomment one to show it again: it is labelled "Concept" everywhere.
+// `slug`, `category`, `year`, `isConcept`, `domain`, `image`, `stack`, `layout` and `palette` are the same in
+// every language; the rest is words. This file has no imports on purpose: vite.config.js reads the slugs from it.
+// `image` is a screenshot in public/projects/; `srcSet` lists every size of it so each screen gets a sharp one.
+// Without `image`, the project shows the illustration picked by `layout`, in the colors of `palette`.
 
 export const projectCategories = [
   { id: "all", label: "All work" },
   { id: "local", label: "Local business" },
-  { id: "ecommerce", label: "E-commerce" },
+  // We do not build online stores, so this filter is switched off.
+  // { id: "ecommerce", label: "E-commerce" },
   { id: "international", label: "International" },
 ];
 
 export const projects = [
+  {
+    slug: "fitofarm-2024",
+    name: "FITOFARM-2024",
+    category: "local",
+    categoryLabel: "Local business",
+    year: 2026,
+    isConcept: false,
+    domain: "fitofarm2024.ge",
+    image: {
+      src: "/projects/fitofarm-2024-1920.webp",
+      srcSet: "/projects/fitofarm-2024-960.webp 960w, /projects/fitofarm-2024-1920.webp 1920w",
+      width: 1920,
+      height: 1260,
+    },
+    tagline: "A four-language website for a Georgian maker of natural remedies.",
+    summary:
+      "Product pages with full leaflets and where-to-buy links, customer ratings, and the whole site in Georgian, English, Russian and German.",
+    services: ["Website design", "Development", "Multilingual"],
+    stack: ["React", "Vite", "Node.js", "Render"],
+    layout: "clinic",
+    palette: { bg: "#cfe8d6", surface: "#ffffff", text: "#131418", accent: "#188038", accent2: "#f2c230" },
+    brief:
+      "FITOFARM-2024 makes plant-based dietary supplements in Tkibuli, in the mountains of western Georgia. They needed a credible home for their products: one place where patients, pharmacists and partners abroad can read the full product information, see where to buy and get in touch.",
+    approach: [
+      "A page for every product with its key facts at a glance, the full leaflet one tap away and links to the pharmacy chains that stock it.",
+      "The whole site in Georgian, English, Russian and German, so visitors and partners abroad read it in their own language.",
+      "Customer ratings for each product, a contact form and click-to-call buttons, so people are always one step away from the team.",
+    ],
+    highlights: ["Four languages", "Product pages with full leaflets", "Where-to-buy links and maps", "Customer ratings and reviews"],
+  },
+
+  // The concept projects, switched off for now.
+  /*
   {
     slug: "harbor-and-pine-cafe",
     name: "Harbor & Pine Café",
@@ -143,4 +180,5 @@ export const projects = [
     ],
     highlights: ["Reusable design system", "Interactive explainers", "Resource library", "Marketing-owned content"],
   },
+  */
 ];

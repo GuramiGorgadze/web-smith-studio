@@ -4,7 +4,7 @@ The marketing site for Web Smith Studio, a studio that builds websites for local
 
 Built with React 19, Vite 8, React Router 7, Radix UI primitives wrapped in shadcn-style components, SCSS modules, and react-hook-form with zod for the contact form.
 
-The whole site is in **English and Georgian** (`/work` and `/ka/work`), with a language switch, its own fonts, search-engine language tags and Georgian confirmation emails. See [Languages](#languages-english-and-georgian).
+The whole site is written in **English and Georgian** (`/work` and `/ka/work`), with a language switch, its own fonts, search-engine language tags and Georgian confirmation emails. **Georgian is switched off for now**: only English is published, and there is no `/ka` address and no language button. See [Languages](#languages-english-and-georgian) for how to switch it back on.
 
 The contact form is received by a small Node.js server in [`server/`](./server/README.md) that checks each inquiry and uses Nodemailer to send you a designed notification email and the visitor a confirmation.
 
@@ -34,17 +34,19 @@ npm run server:emails    # builds sample emails to look at: server/.previews/ind
 
 ## What is in it
 
-Every route below also exists in Georgian under `/ka` (`/ka/pricing`, `/ka/work/atelier-voss`, ...).
+When Georgian is switched on, every route below also exists in Georgian under `/ka` (`/ka/work`, `/ka/work/fitofarm-2024`, ...).
+
+The studio builds landing pages and business and organization websites (no online stores or web apps), with a content editor, blog and news, multiple languages, copywriting and analytics as add-ons.
 
 | Route | Page |
 | --- | --- |
-| `/` | Landing page: hero, stats, tech marquee, services, the scroll-driven "how we work" tour, concept projects, live project estimator, pricing with a care-plan switch, FAQ and closing call to action |
+| `/` | Landing page: hero, stats, tech marquee, services, the scroll-driven "how we work" tour, selected work, live project estimator, packages with a care-plan switch, FAQ and closing call to action |
 | `/services` | Every service in detail, with a sticky section menu that follows your scroll |
-| `/work` | Project grid with Radix filter tabs |
-| `/work/:slug` | Six case-study pages (each labelled **Concept**), with a "next project" link |
-| `/pricing` | Packages, how pricing works, the estimator, what is always included, FAQ |
+| `/work` | Project grid. Filter tabs appear once projects span two or more categories |
+| `/work/:slug` | Case-study pages: FITOFARM-2024 (a client project, with a screenshot and a link to the live site). The six concept projects are switched off in `projects.js` |
+| `/pricing` | **Switched off for now** (the route is commented out in `src/routes/router.jsx`): packages, how pricing works, the estimator, what is always included, FAQ |
 | `/about` | Story, values and disciplines |
-| `/contact` | Validated inquiry form, prefilled from the estimator and the pricing and services buttons |
+| `/contact` | Validated inquiry form, prefilled from the estimator and the package and services buttons |
 | `/privacy`, `/terms` | Plain-language starter documents with an "on this page" list |
 | anything else | A 404 page (marked `noindex`) |
 
@@ -83,12 +85,16 @@ Every component has its own `.module.scss` file next to it. Shared tokens, funct
 
 - **Colors, fonts and spacing:** `src/styles/_theme.scss` (dark and light tokens as CSS variables). The dark base `#0d0c10` is the theme color published by psychsat.com, the reference for the look; the blue to indigo to lavender accents come from the Web Smith logo.
 - **Studio facts that do not depend on language (name, address, email, social links):** `src/data/site.js`.
-- **Words (tagline, copy, services, FAQ, projects, legal text, form labels, error messages):** `src/content/en/` for English and `src/content/ka/` for Georgian. Find the sentence in one of those files and change it. Prices shown in the text are in `pricing.js` and `sections.js`.
-- **Estimator numbers:** `src/lib/estimator.js`. Its words are in `src/content/<language>/estimator.js`.
+- **Words (tagline, copy, services, FAQ, projects, legal text, form labels, error messages):** `src/content/en/` for English and `src/content/ka/` for Georgian. Find the sentence in one of those files and change it. Prices shown in the text are in `pricing.js` (packages), `services.js` ("from" prices), `faqs.js` (the cost answer) and `contact.js` (budget ranges, also in `server/src/mail/messages.js`).
+- **Estimator numbers:** `src/lib/estimator.js`. Its words are in `src/content/<language>/estimator.js`. The package prices must equal the estimator's base prices; `npm test` checks it.
+- **Projects:** `src/content/<language>/projects.js`. A client project can have a `domain` (shown in the browser frame, with a "Visit the live site" link) and an `image` (a screenshot in `public/projects/`, with a `srcSet` of its sizes); without one it shows a drawn illustration. Pick the projects on the home page in `featuredSlugs` in `src/components/sections/home/WorkShowcase.jsx`.
+- **The pricing page:** switched off. To bring it back, uncomment its route in `src/routes/router.jsx`, `"/pricing"` in `pageRoutes` in `vite.config.js` and the "Pricing" links in `src/content/<language>/navigation.js`.
 - **Site address, contact email, form endpoint:** copy `.env.example` to `.env` and fill it in (see below).
 - **Adding a team section:** add the people to `src/data/about.js`, build a small `TeamSection` next to `AboutStory` in `src/components/sections/about/`, and place it in `src/pages/About/AboutPage.jsx`. No team members are shown today because none were provided.
 
 ## Languages (English and Georgian)
+
+**Georgian is switched off for now.** `LOCALES` in `src/i18n/locales.js` lists only `"en"`, so the router, the sitemap, the hreflang tags and the first-visit redirect only know English, and the language switch is commented out in `Navbar.jsx`, `MobileNav.jsx` and `Footer.jsx` (`src/components/layout/`). The Georgian words in `src/content/ka/` are kept up to date and `npm test` still checks them, and the mail server still writes Georgian emails. To switch Georgian back on: uncomment `"ka"` in `LOCALES`, the three `<LanguageSwitch />` lines and their imports, the Georgian paragraph in `index.html` (inside `<noscript>`), and remove the rule marked "while the language switch is off" in `MobileNav.module.scss`. Then update the test "publishes English only while Georgian is switched off" in `tests/i18n.test.js`. The rest of this section describes the site with Georgian on.
 
 - **Addresses.** The default language has the plain addresses (`/pricing`), every other language lives under its code (`/ka/pricing`). `VITE_DEFAULT_LOCALE=ka` swaps them.
 - **Switching.** The header has a button that shows the other language (in the mobile menu both languages are listed). It keeps the page, the query and the `#section`, and remembers the choice in the browser (`localStorage` key `wss-locale`, no cookie, nothing sent anywhere). Mention it in your privacy policy if you want to be exact; the starter policy already covers browser storage.
@@ -146,8 +152,8 @@ Page titles and descriptions are set in the browser. Search engines read them fi
 
 ## Sample content to replace before launch
 
-- Prices, timelines, the "48h / 95+ / 100%" figures, the response-time promise and the three promises under the hero buttons are sample figures. So are the pricing principles on `/pricing`.
-- The six projects under `/work` are fictional concepts on `.example` domains and are labelled **Concept** everywhere. Replace them with real case studies as you ship.
+- Prices, timelines, the "48h / 95+ / 100%" figures, the response-time promise and the three promises under the hero buttons are sample figures. So are the pricing principles on `/pricing` (switched off for now).
+- FITOFARM-2024 under `/work` is a real client project. Its text was written from the live site at fitofarm2024.ge; check the year (2026), the services and the "built with" list, which were inferred, not confirmed. The screenshot in `public/projects/` was taken from the live site. The six fictional concept projects are still in `projects.js`, commented out; they are labelled **Concept** everywhere if you bring one back.
 - `hello@your-domain.com`, `https://your-domain.com` and the social links are placeholders.
 - There are no testimonials, client logos or results on the site, because none were provided. Add real ones when you have them.
 - **The Georgian text was written by an AI assistant and has not been reviewed by a native speaker.** Have a Georgian speaker read it (the legal pages, prices, form messages and emails above all) before launch. The wording rules used (formal "თქვენ", Latin brand names, "მხარდაჭერის გეგმა" for care plan, ...) are easy to change in `src/content/ka/`; the form greets people by first name ("გმადლობთ, ანა"), which is not always grammatical in Georgian for every name.

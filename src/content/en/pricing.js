@@ -1,4 +1,5 @@
-// Starting prices in USD. Keep these in step with src/lib/estimator.js.
+// Starting prices in USD. Keep these in step with src/lib/estimator.js (the tests check that `from` is the base price
+// of the estimator type named in `type`). Shown in the packages section of the home page.
 // `id`, `from`, `care`, `type` and `featured` are the same in every language; the rest is words.
 
 export const pricingTiers = [
@@ -6,15 +7,15 @@ export const pricingTiers = [
     id: "launch",
     name: "Launch",
     tagline: "One focused page that turns visitors into inquiries.",
-    from: 1200,
-    care: 120,
+    from: 300,
+    care: 25,
     cta: "Start with Launch",
     type: "landing",
     featured: false,
     features: [
       "Single custom-designed landing page",
       "Mobile-first and fully responsive",
-      "Contact or booking form with email alerts",
+      "Contact form with email alerts",
       "On-page SEO and social sharing cards",
       "Delivered in about 1 to 2 weeks",
     ],
@@ -22,9 +23,9 @@ export const pricingTiers = [
   {
     id: "business",
     name: "Business",
-    tagline: "A complete website for a local or growing brand.",
-    from: 2800,
-    care: 180,
+    tagline: "A complete website for a business or organization.",
+    from: 700,
+    care: 40,
     cta: "Start with Business",
     type: "business",
     featured: true,
@@ -35,23 +36,6 @@ export const pricingTiers = [
       "Local SEO and Google Business set-up",
       "Analytics, forms and newsletter hook-up",
       "Delivered in about 3 to 5 weeks",
-    ],
-  },
-  {
-    id: "commerce",
-    name: "Store and apps",
-    tagline: "Online stores, portals and custom web software.",
-    from: 6500,
-    care: 300,
-    cta: "Plan my project",
-    type: "store",
-    featured: false,
-    features: [
-      "Storefront or app built around your workflow",
-      "Secure payments, accounts and dashboards",
-      "Integrations with your existing tools",
-      "Performance and security hardening",
-      "Delivered in about 6 to 10 weeks",
     ],
   },
 ];

@@ -158,13 +158,37 @@ const layouts = {
 };
 
 /**
- * A pure-CSS illustration of a project's website. Everything is sized in container-query units,
- * so the picture scales perfectly from a small card to a full-width case-study header.
+ * The picture of a project's website. A project with an `image` (a client project) shows its real screenshot;
+ * any other shows a pure-CSS illustration, sized in container-query units so it scales perfectly from a small
+ * card to a full-width case-study header.
+ *
+ * `sizes` tells the browser how wide the picture is shown, so it downloads the right file from `image.srcSet`.
+ * `priority` loads the screenshot straight away, for the large picture at the top of a page.
  */
-export function ProjectThumb({ project, className }) {
+export function ProjectThumb({ project, className, sizes = "(min-width: 768px) 50vw, 100vw", priority = false }) {
   const { t } = useI18n();
   const text = useContent().sections.work;
-  const { palette, layout } = project;
+  const { palette, layout, image } = project;
+
+  if (image) {
+    return (
+      <div className={cn(styles.thumb, className)} style={{ "--p-bg": palette.bg }}>
+        <img
+          className={styles.image}
+          src={image.src}
+          srcSet={image.srcSet}
+          sizes={image.srcSet ? sizes : undefined}
+          width={image.width}
+          height={image.height}
+          alt={t(text.screenshotLabel, { project: project.name })}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
+          decoding="async"
+        />
+      </div>
+    );
+  }
+
   const Layout = layouts[layout] ?? CafeLayout;
 
   return (

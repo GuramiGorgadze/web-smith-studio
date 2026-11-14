@@ -1,7 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/common/Container";
-import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
+// Georgian is switched off for now (src/i18n/locales.js), so there is no language switch.
+// import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { Badge } from "@/components/ui";
 import { useI18n } from "@/i18n/I18nContext";
 import { Link } from "@/i18n/Link";
@@ -44,7 +45,7 @@ export function Footer() {
             <Badge variant="success" dot>
               {site.availability}
             </Badge>
-            <LanguageSwitch variant="segmented" className={styles.language} />
+            {/* <LanguageSwitch variant="segmented" className={styles.language} /> */}
           </div>
 
           <nav className={styles.columns} aria-label={ui.nav.footer}>

@@ -1,4 +1,5 @@
 import { ArrowLeft } from "lucide-react";
+import { ArrowLink } from "@/components/common/ArrowLink";
 import { BackdropGlow } from "@/components/common/BackdropGlow";
 import { Container } from "@/components/common/Container";
 import { Reveal } from "@/components/common/Reveal";
@@ -9,10 +10,14 @@ import { useContent, useI18n } from "@/i18n/I18nContext";
 import { Link } from "@/i18n/Link";
 import styles from "./ProjectHero.module.scss";
 
-/** Case-study header: title, quick facts and a large illustration of the site inside a browser window. */
+/**
+ * Case-study header: title, quick facts and a large picture of the site inside a browser window.
+ * A client project with a `domain` shows its real address in the window and links to the live site.
+ */
 export function ProjectHero({ project }) {
-  const { t } = useI18n();
+  const { t, ui } = useI18n();
   const text = useContent().sections.work;
+  const live = !project.isConcept && Boolean(project.domain);
 
   return (
     <header className={styles.hero}>
@@ -46,11 +51,21 @@ export function ProjectHero({ project }) {
               <dd>{project.isConcept ? text.conceptProject : text.clientProject}</dd>
             </div>
           </dl>
+
+          {live ? (
+            <ArrowLink href={`https://${project.domain}`}>
+              {text.visit}
+              <span className="srOnly">{ui.newTab}</span>
+            </ArrowLink>
+          ) : null}
         </Reveal>
 
         <Reveal delay={140} className={styles.frame}>
-          <WindowFrame url={`${project.slug}.example`} label={t(text.windowLabel, { project: project.name })}>
-            <ProjectThumb project={project} />
+          <WindowFrame
+            url={project.domain ?? `${project.slug}.example`}
+            label={t(live ? text.liveWindowLabel : text.windowLabel, { project: project.name })}
+          >
+            <ProjectThumb project={project} priority sizes="(min-width: 1280px) 1200px, 100vw" />
           </WindowFrame>
         </Reveal>
       </Container>

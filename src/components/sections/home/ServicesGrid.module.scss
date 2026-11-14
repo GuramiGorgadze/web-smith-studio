@@ -9,13 +9,31 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  // Six tracks: a normal card takes two (three per row), a `.wide` card takes three (two per row).
   @include up("lg") {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
 
 .cell {
   display: flex;
+
+  // Two columns: an odd card left on the last row spans it instead of leaving a hole.
+  @include between("md", "lg") {
+    &:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @include up("lg") {
+    grid-column: span 2;
+  }
+}
+
+.wide {
+  @include up("lg") {
+    grid-column: span 3;
+  }
 }
 
 .card {

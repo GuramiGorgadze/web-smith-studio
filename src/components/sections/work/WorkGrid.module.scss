@@ -24,3 +24,10 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+// A single project takes the whole row (its card lays the picture and the words side by side).
+.single {
+  @include up("md") {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

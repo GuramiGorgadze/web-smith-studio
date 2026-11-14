@@ -16,7 +16,9 @@ const pages = () => [
   { path: "services", lazy: page(() => import("@/pages/Services/ServicesPage")) },
   { path: "work", lazy: page(() => import("@/pages/Work/WorkPage")) },
   { path: "work/:slug", lazy: page(() => import("@/pages/WorkDetail/WorkDetailPage")) },
-  { path: "pricing", lazy: page(() => import("@/pages/Pricing/PricingPage")) },
+  // The pricing page is switched off for now. To bring it back, uncomment this line, "/pricing" in `pageRoutes`
+  // (vite.config.js) and the "Pricing" links in src/content/<language>/navigation.js.
+  // { path: "pricing", lazy: page(() => import("@/pages/Pricing/PricingPage")) },
   { path: "about", lazy: page(() => import("@/pages/About/AboutPage")) },
   { path: "contact", lazy: page(() => import("@/pages/Contact/ContactPage")) },
   { path: "privacy", lazy: page(() => import("@/pages/Privacy/PrivacyPage")) },

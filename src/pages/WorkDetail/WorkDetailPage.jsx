@@ -20,7 +20,8 @@ export default function WorkDetailPage() {
     return <NotFoundView title={ui.notFound.projectTitle} description={ui.notFound.projectText} />;
   }
 
-  const next = items[(items.indexOf(project) + 1) % items.length];
+  // With a single project there is no "next" one to point to.
+  const next = items.length > 1 ? items[(items.indexOf(project) + 1) % items.length] : null;
   const path = `/work/${project.slug}`;
 
   return (
@@ -36,7 +37,7 @@ export default function WorkDetailPage() {
       />
       <ProjectHero project={project} />
       <ProjectBody project={project} />
-      <NextProject project={next} />
+      {next ? <NextProject project={next} /> : null}
       <FinalCta variant="project" showSteps={false} />
     </>
   );

@@ -45,7 +45,7 @@ export const ui = {
     copyright: "© {year} {name}. All rights reserved.",
   },
 
-  // {price} is a formatted amount such as $2,800.
+  // {price} is a formatted amount such as $700.
   prices: {
     from: "from {price}",
     fromMonthly: "from {price}/mo",
@@ -67,6 +67,6 @@ export const ui = {
   seo: {
     home: "Home",
     areaServed: "Worldwide",
-    serviceTypes: ["Website design", "Web development", "E-commerce development", "Web app development"],
+    serviceTypes: ["Website design", "Web development", "Landing page design", "Multilingual websites"],
   },
 };

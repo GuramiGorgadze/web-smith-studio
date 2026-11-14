@@ -39,7 +39,8 @@ export default function ServicesPage() {
             <ButtonLink to="/contact" size="lg" iconRight={<ArrowRight size={18} />}>
               {text.primary}
             </ButtonLink>
-            <ButtonLink to="/pricing" variant="outline" size="lg">
+            {/* The pricing page is switched off for now, so this goes to the estimator on the home page. */}
+            <ButtonLink to="/#estimator" variant="outline" size="lg">
               {text.secondary}
             </ButtonLink>
           </>

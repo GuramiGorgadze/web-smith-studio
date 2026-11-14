@@ -7,7 +7,8 @@ export const primaryNav = [
   { label: "Services", to: "/services", children: services },
   { label: "Work", to: "/work" },
   { label: "Process", to: "/#process" },
-  { label: "Pricing", to: "/pricing" },
+  // The pricing page is switched off for now (see src/routes/router.jsx).
+  // { label: "Pricing", to: "/pricing" },
   { label: "About", to: "/about" },
 ];
 
@@ -20,7 +21,7 @@ export const footerColumns = [
       { label: "Home", to: "/" },
       { label: "How we work", to: "/#process" },
       { label: "Selected work", to: "/work" },
-      { label: "Pricing", to: "/pricing" },
+      // { label: "Pricing", to: "/pricing" },
       { label: "Project estimator", to: "/#estimator" },
     ],
   },

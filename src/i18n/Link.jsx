@@ -3,7 +3,7 @@ import { useI18n } from "@/i18n/I18nContext";
 
 /**
  * Adds the current language to a link target: "/contact" -> "/ka/contact" on the Georgian site.
- * Strings that are not site paths ("#estimator", "?type=store") and objects without a pathname are left alone.
+ * Strings that are not site paths ("#estimator", "?type=landing") and objects without a pathname are left alone.
  */
 export function localizeTo(to, path) {
   if (typeof to === "string") return path(to);

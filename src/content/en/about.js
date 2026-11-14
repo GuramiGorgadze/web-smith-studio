@@ -16,6 +16,6 @@ export const aboutStory = {
 export const aboutFacts = [
   { label: "Founded", value: "{founded}" },
   { label: "How we work", value: siteText.workingModel },
-  { label: "Who we build for", value: "Local shops, growing brands and international businesses" },
+  { label: "Who we build for", value: "Local businesses, organizations and growing brands, at home and abroad" },
   { label: "Right now", value: siteText.availability },
 ];

@@ -50,9 +50,14 @@
     margin-inline: auto;
   }
 
+  // One column per package (`--tiers` is set by PricingTable). Cards keep the width they have in a row of
+  // three, so two packages sit centred instead of stretching across the page.
   @include up("lg") {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--tiers, 3), minmax(0, 1fr));
     align-items: stretch;
+    width: 100%;
+    max-width: calc(var(--tiers, 3) * 24rem + (var(--tiers, 3) - 1) * 1.5rem);
+    margin-inline: auto;
   }
 }
 

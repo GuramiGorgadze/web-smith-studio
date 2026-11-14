@@ -13,7 +13,10 @@ import { ButtonLink } from "@/components/ui";
 import { useI18n } from "@/i18n/I18nContext";
 import { breadcrumbJsonLd, faqJsonLd } from "@/lib/structuredData";
 
-/** Packages, how pricing works, the live estimator and the FAQ, all on one page. */
+/**
+ * Packages, how pricing works, the live estimator and the FAQ, all on one page.
+ * Switched off for now: its route is commented out in src/routes/router.jsx, so nothing links here.
+ */
 export default function PricingPage() {
   const i18n = useI18n();
   const { faqs, pages } = i18n.content;

@@ -8,7 +8,7 @@ import { Rich } from "@/i18n/Rich";
 import styles from "./PricingTable.module.scss";
 
 /**
- * Three packages plus a switch that shows the optional monthly care plan on every card.
+ * The packages plus a switch that shows the optional monthly care plan on every card.
  * `estimatorTo` is where the footnote link goes; pages that contain the estimator pass "#estimator".
  */
 export function PricingTable({ estimatorTo = "/#estimator" }) {
@@ -26,7 +26,7 @@ export function PricingTable({ estimatorTo = "/#estimator" }) {
         </Label>
       </div>
 
-      <ul className={styles.grid}>
+      <ul className={styles.grid} style={{ "--tiers": pricing.tiers.length }}>
         {pricing.tiers.map((tier, index) => (
           <Reveal as="li" key={tier.id} delay={index * 90} className={styles.cell}>
             <PricingCard tier={tier} withCare={withCare} />

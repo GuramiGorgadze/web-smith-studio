@@ -7,18 +7,15 @@ import {
   DialogTrigger,
 } from "@/components/ui";
 import { useContent, useI18n } from "@/i18n/I18nContext";
-import { FEATURES, SITE_TYPES, surchargePercent, TIMELINES } from "@/lib/estimator";
+import { FEATURES, SITE_TYPES } from "@/lib/estimator";
 import { formatUSD } from "@/lib/format";
 import styles from "./EstimateInfoDialog.module.scss";
 
 /** Explains, from the same data the estimator uses, how an estimate is put together. */
 export function EstimateInfoDialog({ trigger }) {
-  const { t, count, ui } = useI18n();
+  const { count, ui } = useI18n();
   const { sections, estimator: words } = useContent();
   const text = sections.estimatorTool.info;
-
-  // The surcharge in the sentence comes from the same table the estimate is calculated with.
-  const rush = TIMELINES.find((option) => option.multiplier > 1);
 
   return (
     <Dialog>
@@ -26,7 +23,7 @@ export function EstimateInfoDialog({ trigger }) {
       <DialogContent className={styles.content} closeLabel={ui.close}>
         <DialogHeader>
           <DialogTitle>{text.title}</DialogTitle>
-          <DialogDescription>{t(text.description, { percent: rush ? surchargePercent(rush) : 0 })}</DialogDescription>
+          <DialogDescription>{text.description}</DialogDescription>
         </DialogHeader>
 
         <div className={styles.group}>

@@ -2,16 +2,7 @@ import { useMemo, useState } from "react";
 import { EstimateResult } from "@/components/sections/home/estimator/EstimateResult";
 import { Label, Slider, Switch, ToggleGroup, ToggleGroupItem } from "@/components/ui";
 import { useContent, useI18n } from "@/i18n/I18nContext";
-import {
-  clampPages,
-  DEFAULT_ESTIMATE_INPUT,
-  estimateProject,
-  FEATURES,
-  getSiteType,
-  SITE_TYPES,
-  surchargePercent,
-  TIMELINES,
-} from "@/lib/estimator";
+import { clampPages, DEFAULT_ESTIMATE_INPUT, estimateProject, FEATURES, getSiteType, SITE_TYPES } from "@/lib/estimator";
 import { formatUSD } from "@/lib/format";
 import styles from "./ProjectEstimator.module.scss";
 
@@ -43,10 +34,6 @@ export function ProjectEstimator({ initial = DEFAULT_ESTIMATE_INPUT, packagesTo 
       ...current,
       features: on ? [...current.features, id] : current.features.filter((feature) => feature !== id),
     }));
-
-  const setTimeline = (value) => {
-    if (value) setInput((current) => ({ ...current, timeline: value }));
-  };
 
   return (
     <div className={styles.layout}>
@@ -113,20 +100,6 @@ export function ProjectEstimator({ initial = DEFAULT_ESTIMATE_INPUT, packagesTo 
               );
             })}
           </ul>
-        </fieldset>
-
-        <fieldset className={styles.group}>
-          <legend className={styles.legend}>
-            <span className={styles.step}>4</span> {text.timelineLegend}
-          </legend>
-          <ToggleGroup type="single" value={input.timeline} onValueChange={setTimeline} aria-label={text.timelineAria}>
-            {TIMELINES.map((option) => (
-              <ToggleGroupItem key={option.id} value={option.id}>
-                {words.timelines[option.id]}
-                {option.multiplier > 1 ? <span className={styles.surcharge}>+{surchargePercent(option)}%</span> : null}
-              </ToggleGroupItem>
-            ))}
-          </ToggleGroup>
         </fieldset>
       </div>
 

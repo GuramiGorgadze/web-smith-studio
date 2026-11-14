@@ -1,6 +1,6 @@
 // All wording used in the emails, in English (en) and Georgian (ka).
 //
-// The website sends stable option ids (for example "business" or "2k-5k") next to its labels. The emails are
+// The website sends stable option ids (for example "business" or "500-1k") next to its labels. The emails are
 // written from the tables below, never from text typed or posted by the visitor, so a confirmation email can
 // only ever contain our own words (plus the visitor's own first name and email address).
 
@@ -8,18 +8,16 @@ export const optionLabels = {
   projectType: {
     landing: { en: "Landing page", ka: "ლენდინგ გვერდი" },
     business: { en: "Business website", ka: "ბიზნეს ვებსაიტი" },
-    store: { en: "Online store", ka: "ონლაინ მაღაზია" },
-    webapp: { en: "Web app or portal", ka: "ვებ-აპლიკაცია ან პორტალი" },
     redesign: { en: "Redesign or migration", ka: "რედიზაინი ან მიგრაცია" },
     seo: { en: "SEO and speed", ka: "SEO და სიჩქარე" },
     care: { en: "Care plan", ka: "მხარდაჭერის გეგმა" },
     unsure: { en: "Not sure yet", ka: "ჯერ არ ვიცი" },
   },
   budget: {
-    "under-2k": { en: "Under $2,000", ka: "$2,000-ზე ნაკლები" },
-    "2k-5k": { en: "$2,000 to $5,000", ka: "$2,000-დან $5,000-მდე" },
-    "5k-10k": { en: "$5,000 to $10,000", ka: "$5,000-დან $10,000-მდე" },
-    "10k-plus": { en: "$10,000 or more", ka: "$10,000 ან მეტი" },
+    "under-500": { en: "Under $500", ka: "$500-ზე ნაკლები" },
+    "500-1k": { en: "$500 to $1,000", ka: "$500-დან $1,000-მდე" },
+    "1k-2k": { en: "$1,000 to $2,000", ka: "$1,000-დან $2,000-მდე" },
+    "2k-plus": { en: "$2,000 or more", ka: "$2,000 ან მეტი" },
     unsure: { en: "Not sure yet", ka: "ჯერ არ ვიცი" },
   },
   timeline: {

@@ -26,7 +26,7 @@ export const sections = {
     eyebrow: "what we build",
     title: "Everything a modern business site needs.",
     description:
-      "From a single landing page to a full online store, every project is designed around one question: how will this help your business grow?",
+      "From a single landing page to a full business or organization website, every project is designed around one question: how will this help your business grow?",
     cta: "All services",
   },
 
@@ -47,9 +47,9 @@ export const sections = {
 
   workShowcase: {
     eyebrow: "selected work",
-    title: "Different businesses. One standard of craft.",
+    title: "Real sites, live for real businesses.",
     description:
-      "A look at the kinds of sites we build, from neighborhood favorites to international brands. These are concept projects that show our approach; real case studies will appear here as we ship them.",
+      "Designed, built and launched by us, from the first sketch to launch day. Open a project to see the brief, our approach and what the site does. More case studies are on the way.",
     cta: "View all work",
   },
 
@@ -68,8 +68,6 @@ export const sections = {
     singlePage: "A landing page is a single, focused page.",
     pagesIncluded: "{included} pages are included. Each extra page adds {price}.",
     extrasLegend: "Anything extra?",
-    timelineLegend: "How soon do you need it?",
-    timelineAria: "Timeline",
     result: {
       title: "your indicative estimate",
       rangeDash: " to ",
@@ -84,7 +82,7 @@ export const sections = {
     info: {
       title: "How the estimate works",
       description:
-        "We start with a base price for the type of site, add any pages beyond the included ones, then your add-ons. A priority timeline adds {percent}%. The range allows for content and complexity that only a conversation can settle.",
+        "We start with a base price for the type of site, add any pages beyond the included ones, then your add-ons. The range allows for content and complexity that only a conversation can settle.",
       startingPrices: "Starting prices",
       included: { one: "{count} page included", other: "{count} pages included" },
       addOns: "Add-ons",
@@ -104,7 +102,7 @@ export const sections = {
       "Prices are starting points in US dollars. Your fixed quote depends on pages, features and timing. Want to see a range first? <estimator>Try the live estimator</estimator>.",
   },
 
-  // Words around the price on a package card. `fromBefore` and `fromAfter` are two halves of "from $1,200":
+  // Words around the price on a package card. `fromBefore` and `fromAfter` are two halves of "from $300":
   // some languages put the word after the number.
   pricingCard: {
     fromBefore: "from",
@@ -137,7 +135,8 @@ export const sections = {
     description:
       "Tell us about your business and what you want your website to do. We will talk it through on a free call and follow up with a fixed, written quote.",
     primary: { label: "Start your project", to: "/contact" },
-    secondary: { label: "See pricing", to: "/pricing" },
+    // The pricing page is switched off for now (see src/routes/router.jsx), so this points at the estimator.
+    secondary: { label: "Estimate your project", to: "/#estimator" },
     steps: [
       { title: "Tell us about your business", text: "A short form: what you do, who you serve and what you need the site to achieve." },
       { title: "We talk it through", text: "A free 30-minute call to shape the plan together. No pressure, no jargon." },
@@ -203,6 +202,10 @@ export const sections = {
     type: "Type",
     windowLabel: "{project} website concept",
     thumbLabel: "Illustration of the {project} website concept",
+    // For client projects, which show a real screenshot and a link to the live site.
+    liveWindowLabel: "The {project} website",
+    screenshotLabel: "Screenshot of the {project} home page",
+    visit: "Visit the live site",
     detailsLabel: "Project details",
     brief: "The brief",
     approach: "Our approach",

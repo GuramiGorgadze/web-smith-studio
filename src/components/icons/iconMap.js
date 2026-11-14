@@ -1,5 +1,4 @@
 import {
-  AppWindow,
   Brush,
   Eye,
   Gauge,
@@ -8,16 +7,15 @@ import {
   LayoutDashboard,
   LifeBuoy,
   MessageSquare,
+  Rocket,
   ShieldCheck,
-  Store,
   Zap,
 } from "lucide-react";
 
 // Data files refer to icons by short names so they stay free of React imports.
 export const iconMap = {
   layout: LayoutDashboard,
-  store: Store,
-  app: AppWindow,
+  rocket: Rocket,
   brush: Brush,
   gauge: Gauge,
   lifebuoy: LifeBuoy,

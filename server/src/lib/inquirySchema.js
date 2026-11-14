@@ -11,7 +11,7 @@ const optionalLine = (max) =>
     .transform((value) => singleLine(value ?? ""))
     .pipe(z.string().max(max, `Please keep this under ${max} characters.`));
 
-/** A short machine id such as "business" or "2k-5k". Anything else is ignored rather than rejected. */
+/** A short machine id such as "business" or "500-1k". Anything else is ignored rather than rejected. */
 const optionId = z
   .string()
   .regex(/^[a-z0-9-]{1,40}$/)

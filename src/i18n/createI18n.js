@@ -1,5 +1,5 @@
 // Relative imports with extensions on purpose: this file is also loaded by Node (the tests), which has no "@" alias.
-import { LOCALES, LOCALE_META } from "./locales.js";
+import { LOCALE_META } from "./locales.js";
 import { format, pluralize } from "./text.js";
 
 /**
@@ -18,7 +18,8 @@ export function createI18n(locale, content, routing) {
     locale,
     defaultLocale: routing.defaultLocale,
     meta: LOCALE_META[locale],
-    languages: LOCALES.map((code) => LOCALE_META[code]),
+    // The published languages (src/i18n/locales.js): what the language switch and the hreflang tags list.
+    languages: routing.locales.map((code) => LOCALE_META[code]),
     content,
     site,
     ui,

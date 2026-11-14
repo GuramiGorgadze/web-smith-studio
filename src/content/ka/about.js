@@ -16,6 +16,6 @@ export const aboutStory = {
 export const aboutFacts = [
   { label: "დაარსდა", value: "{founded}" },
   { label: "როგორ ვმუშაობთ", value: siteText.workingModel },
-  { label: "ვისთვის ვქმნით", value: "ადგილობრივი მაღაზიებისთვის, მზარდი ბრენდებისა და საერთაშორისო ბიზნესებისთვის" },
+  { label: "ვისთვის ვქმნით", value: "ადგილობრივი ბიზნესებისთვის, ორგანიზაციებისა და მზარდი ბრენდებისთვის, საქართველოში და მის ფარგლებს გარეთ" },
   { label: "ახლა", value: siteText.availability },
 ];

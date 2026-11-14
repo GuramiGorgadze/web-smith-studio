@@ -6,14 +6,15 @@ import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { describe, it } from "node:test";
-import { LOCALES } from "../src/i18n/locales.js";
 import { marksOf } from "../src/i18n/text.js";
 import { SITE_TYPES } from "../src/lib/estimator.js";
-import { GEORGIAN, ROOT, getAt, kindOf, leaves, loadLocale, moduleNames, pathToString } from "./helpers/content.js";
+import { CONTENT_LOCALES, GEORGIAN, ROOT, getAt, kindOf, leaves, loadLocale, moduleNames, pathToString } from "./helpers/content.js";
 
-const loaded = Object.fromEntries(await Promise.all(LOCALES.map(async (code) => [code, await loadLocale(code)])));
+// Every language with a content folder, including one that is switched off (Georgian, for now): its words must
+// stay complete so it can be switched back on at any time.
+const loaded = Object.fromEntries(await Promise.all(CONTENT_LOCALES.map(async (code) => [code, await loadLocale(code)])));
 const en = loaded.en;
-const OTHER = LOCALES.filter((code) => code !== "en");
+const OTHER = CONTENT_LOCALES.filter((code) => code !== "en");
 
 /** Georgian letters next to Latin letters or digits with no hyphen between them: "SEOსა" instead of "SEO-სა". */
 const GLUED = new RegExp(`[A-Za-z0-9]${GEORGIAN.source}|${GEORGIAN.source}[A-Za-z0-9]`, "u");
@@ -46,6 +47,7 @@ const DATA_KEYS_OUTSIDE_TEXT = new Set([
   "screen",
   "url",
   "domain",
+  "image",
   "typeName",
   "tabs",
   "category",
@@ -231,7 +233,7 @@ describe("content files", () => {
 });
 
 describe("the content of every language", () => {
-  for (const code of LOCALES) {
+  for (const code of CONTENT_LOCALES) {
     describe(code, () => {
       const content = loaded[code];
 

@@ -13,6 +13,17 @@
   border-radius: inherit;
 }
 
+// ---------- A real screenshot (client projects) ----------
+// The page's own background color shows while the file loads, so the frame never flashes white.
+.image {
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: top center;
+}
+
 // ---------- Shared pieces ----------
 .nav {
   display: flex;

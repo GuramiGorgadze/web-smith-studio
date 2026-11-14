@@ -6,7 +6,18 @@
  * with the same files as src/content/en/ (the tests in tests/ tell you what is missing).
  */
 
-export const LOCALES = Object.freeze(["en", "ka"]);
+/**
+ * The languages the site is published in. The routes (/ka/...), the sitemap, the hreflang tags and the
+ * first-visit language redirect all follow this list.
+ *
+ * Georgian is switched off for now: there is no /ka address and no language button. Its words in
+ * src/content/ka/ are kept up to date and still checked by the tests. To switch it back on, uncomment "ka"
+ * below and the <LanguageSwitch /> lines in Navbar.jsx, MobileNav.jsx and Footer.jsx (src/components/layout/).
+ */
+export const LOCALES = Object.freeze([
+  "en",
+  // "ka",
+]);
 
 export const LOCALE_META = Object.freeze({
   en: Object.freeze({
@@ -26,9 +37,9 @@ export const LOCALE_META = Object.freeze({
   }),
 });
 
-/** Anything that is not a known language code falls back to English. */
-export function normalizeDefaultLocale(value) {
-  return LOCALES.includes(value) ? value : "en";
+/** Anything that is not a published language code falls back to English. */
+export function normalizeDefaultLocale(value, locales = LOCALES) {
+  return locales.includes(value) ? value : "en";
 }
 
 /**
@@ -36,9 +47,10 @@ export function normalizeDefaultLocale(value) {
  *
  * The default language lives at the plain addresses (`/work`), every other language under its code
  * (`/ka/work`). Content paths are always written without a language ("/work"); `localize` adds it.
+ * `locales` is the list of published languages; the tests pass their own list to check two languages.
  */
-export function createRouting(defaultLocale = "en") {
-  const fallback = normalizeDefaultLocale(defaultLocale);
+export function createRouting(defaultLocale = "en", locales = LOCALES) {
+  const fallback = normalizeDefaultLocale(defaultLocale, locales);
 
   /** "" for the default language, "/ka" for the others. */
   const prefix = (locale) => (locale === fallback ? "" : `/${locale}`);
@@ -48,7 +60,7 @@ export function createRouting(defaultLocale = "en") {
     const [, first = "", ...rest] = String(pathname).split("/");
     const code = first.toLowerCase();
 
-    for (const locale of LOCALES) {
+    for (const locale of locales) {
       if (locale !== fallback && code === locale) return { locale, path: `/${rest.join("/")}` };
     }
     return { locale: fallback, path: pathname || "/" };
@@ -70,17 +82,17 @@ export function createRouting(defaultLocale = "en") {
 
   /** Every language version of one site path, for hreflang tags and the sitemap. */
   function alternates(path) {
-    return LOCALES.map((locale) => ({ locale, path: localize(path, locale) }));
+    return locales.map((locale) => ({ locale, path: localize(path, locale) }));
   }
 
   /** The first browser language we publish in, or the default. `preferences` is like navigator.languages. */
   function pick(preferences = []) {
     for (const tag of preferences) {
       const primary = String(tag).toLowerCase().split("-")[0];
-      if (LOCALES.includes(primary)) return primary;
+      if (locales.includes(primary)) return primary;
     }
     return fallback;
   }
 
-  return { defaultLocale: fallback, prefix, strip, localize, alternates, pick };
+  return { defaultLocale: fallback, locales, prefix, strip, localize, alternates, pick };
 }

@@ -144,7 +144,7 @@ describe("option labels and messages", () => {
   });
 
   it("finds labels by id and ignores unknown or inherited ids", () => {
-    assert.equal(labelFor("budget", "2k-5k", "en"), "$2,000 to $5,000");
+    assert.equal(labelFor("budget", "500-1k", "en"), "$500 to $1,000");
     assert.equal(labelFor("timeline", "asap", "ka"), "რაც შეიძლება მალე");
     assert.equal(labelFor("budget", "nope", "en"), undefined);
     assert.equal(labelFor("budget", "constructor", "en"), undefined);
@@ -234,10 +234,10 @@ describe("studio notification", () => {
       "Harbor &amp; Pine Café",
       "ana@harborpine.example",
       "Business website",
-      "$2,000 to $5,000",
+      "$500 to $1,000",
       "As soon as possible",
       "Yes, please tell me about care plans",
-      "Indicative range $3,150 to $4,000",
+      "Indicative range $850 to $1,050",
       "Could we have a call this week?",
       "Reply by email",
     ]) {
@@ -252,7 +252,7 @@ describe("studio notification", () => {
 
   it("starts with useful preview text for the inbox list", () => {
     const { html } = notification("estimateEn");
-    assert.match(html, /display:none[^>]*>\$2,000 to \$5,000 · As soon as possible · ana@harborpine\.example/);
+    assert.match(html, /display:none[^>]*>\$500 to \$1,000 · As soon as possible · ana@harborpine\.example/);
   });
 
   it("links the reply button to a prefilled email in the visitor's language", () => {
@@ -267,9 +267,9 @@ describe("studio notification", () => {
   });
 
   it("uses the studio's own wording for known option ids instead of what the form sent", () => {
-    const { html } = notification("estimateEn", { projectType: "A label from somewhere else", ids: { projectType: "store", budget: "10k-plus", timeline: "flexible", care: false } });
-    assert.ok(html.includes("Online store"));
-    assert.ok(html.includes("$10,000 or more"));
+    const { html } = notification("estimateEn", { projectType: "A label from somewhere else", ids: { projectType: "redesign", budget: "2k-plus", timeline: "flexible", care: false } });
+    assert.ok(html.includes("Redesign or migration"));
+    assert.ok(html.includes("$2,000 or more"));
     assert.ok(html.includes("Not right now"));
     assert.equal(html.includes("A label from somewhere else"), false);
   });
@@ -374,7 +374,7 @@ describe("visitor confirmation", () => {
       "daniel@example.com",
       "within one business day",
       "Landing page",
-      "Under $2,000",
+      "Under $500",
       "I am flexible",
       "We read every message",
       "See our work",
@@ -470,7 +470,7 @@ describe("visitor confirmation", () => {
   it("has a plain-text version", () => {
     const { text } = confirmation("simpleEn");
     assert.match(text, /^Thanks, Daniel\. Your message is in\.\n\nWe will reply to daniel@example\.com within one business day/);
-    assert.ok(text.includes("Your request:\n- Project type: Landing page\n- Budget: Under $2,000\n- Timeline: I am flexible"));
+    assert.ok(text.includes("Your request:\n- Project type: Landing page\n- Budget: Under $500\n- Timeline: I am flexible"));
     assert.ok(text.includes("1. We read every message"));
     assert.ok(text.includes("See our work: https://studio.example.test/work"));
     assert.doesNotMatch(text, /<\/?(p|td|tr|table|div|span|a|br)\b/i);

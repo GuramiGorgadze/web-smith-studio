@@ -6,14 +6,15 @@ export const pages = {
   services: {
     seoTitle: "Services",
     seoDescription:
-      "Business websites, online stores, web apps, redesigns, SEO and care plans from Web Smith Studio. Custom design, fixed quotes and full ownership.",
+      "Landing pages, business and organization websites, redesigns, SEO and care plans from Web Smith Studio. Custom design, fixed quotes and full ownership.",
     eyebrow: "what we build",
-    titleLead: "Websites, stores and apps",
+    titleLead: "Landing pages and websites",
     titleHighlight: "built to earn their keep.",
     description:
-      "From a single landing page to a custom portal, every project starts with your goals and ends with a site you own, understand and can grow.",
+      "From a single landing page to a multilingual organization website, every project starts with your goals and ends with a site you own, understand and can grow.",
     primary: "Start a project",
-    secondary: "See pricing",
+    // Goes to the estimator on the home page while the pricing page is switched off.
+    secondary: "Estimate your project",
     sectionLabel: "Our services",
     jump: "Jump to a service",
   },
@@ -21,13 +22,14 @@ export const pages = {
   work: {
     seoTitle: "Work",
     seoDescription:
-      "Concept projects from Web Smith Studio: a café, a dental clinic, a fashion store, a logistics company, a yoga studio and a fintech, each designed the way we would build it for a real client.",
+      "Websites designed and built by Web Smith Studio, including FITOFARM-2024: a four-language site for a Georgian maker of natural dietary supplements.",
     eyebrow: "selected work",
-    titleLead: "Concept projects that show",
-    titleHighlight: "how we think.",
+    titleLead: "Real websites for",
+    titleHighlight: "real businesses.",
     description:
-      "Six different businesses, one standard of craft. Open any project to see the brief, our approach and what the finished site would include.",
+      "Open a project to see the brief, our approach and what the finished site does for the business behind it.",
     sectionLabel: "Projects",
+    // Shown above the projects only while some of them are concepts (`isConcept` in projects.js).
     notice:
       "<strong>These are concept projects.</strong> We are a new studio, so each one is a fictional business that we designed and planned exactly as we would for a client. Real case studies will replace them as we launch.",
   },
@@ -37,10 +39,11 @@ export const pages = {
     conceptTitle: "{project} (concept)",
   },
 
+  // The pricing page is switched off for now (see src/routes/router.jsx); its words are kept for when it returns.
   pricing: {
     seoTitle: "Pricing",
     seoDescription:
-      "Clear website packages from Web Smith Studio: landing pages from $1,200, business websites from $2,800 and stores and apps from $6,500. Fixed, written quotes.",
+      "Clear website packages from Web Smith Studio: landing pages from $300 and business and organization websites from $700. Fixed, written quotes.",
     eyebrow: "pricing",
     titleLead: "Fair prices.",
     titleHighlight: "No surprise invoices.",

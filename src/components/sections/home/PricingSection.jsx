@@ -5,7 +5,7 @@ import { PricingTable } from "@/components/sections/pricing/PricingTable";
 import { useContent } from "@/i18n/I18nContext";
 import styles from "./PricingSection.module.scss";
 
-/** Home page pricing: three packages with a care-plan switch. */
+/** Home page pricing: the packages with a care-plan switch. */
 export function PricingSection() {
   const { sections } = useContent();
   const text = sections.pricing;

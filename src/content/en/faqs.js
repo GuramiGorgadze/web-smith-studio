@@ -3,13 +3,13 @@ export const faqs = [
     id: "cost",
     question: "How much does a website cost?",
     answer:
-      "A landing page starts around $1,200, a full business website around $2,800, online stores around $6,500 and custom web apps around $9,000. Your exact price depends on pages, features and timing. After a free call you receive a fixed, written quote, and the live estimator on this page gives you a realistic range in the meantime.",
+      "A landing page starts around $300 and a full business or organization website around $700. Your exact price depends on the number of pages and the features you add, such as a content editor, a blog or more languages. After a free call you receive a fixed, written quote, and the live estimator on this page gives you a realistic range in the meantime.",
   },
   {
     id: "time",
     question: "How long does a project take?",
     answer:
-      "A landing page usually ships in one to two weeks, a business site in three to five, and a store or app in six to ten. The biggest variable is how quickly content and feedback arrive, so we agree a schedule with dates before we start.",
+      "A landing page usually ships in one to two weeks and a business website in three to five. The biggest variable is how quickly content and feedback arrive, so we agree a schedule with dates before we start.",
   },
   {
     id: "own",
@@ -21,7 +21,7 @@ export const faqs = [
     id: "need",
     question: "What do you need from me?",
     answer:
-      "A clear idea of your goals, your logo and brand colors if you have them, and your text and photos. Do not have them yet? We can write the copy, source photography and refresh your brand as add-ons.",
+      "A clear idea of your goals, your logo and brand colors if you have them, and your text and photos. Do not have them yet? We can write the copy for you as an add-on and help you source photography.",
   },
   {
     id: "edit",

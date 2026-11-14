@@ -71,7 +71,7 @@ export const tourScreens = {
   discovery: {
     formLabel: "your project brief",
     goalQuestion: "What should the website do?",
-    goals: ["More inquiries", "Sell online", "Look professional"],
+    goals: ["More inquiries", "Get found on Google", "Look professional"],
     customerQuestion: "Who are your customers?",
     customerAnswer: "Local families and weekend visitors",
     launchQuestion: "When would you like to launch?",
@@ -84,7 +84,7 @@ export const tourScreens = {
     mapLabel: "sitemap",
     home: "Home",
     pages: [
-      { name: "Services", children: ["Web design", "Online stores", "Web apps"] },
+      { name: "Services", children: ["Web design", "Landing pages", "Blog and news"] },
       { name: "Work" },
       { name: "About" },
       { name: "Contact" },
@@ -125,6 +125,6 @@ export const tourScreens = {
     chartLabel: "visitors, last 30 days",
     trend: "Growing",
     tipBadge: "Next up",
-    tip: "Add a booking button to the mobile header to lift inquiries.",
+    tip: "Add a call button to the mobile header to lift inquiries.",
   },
 };

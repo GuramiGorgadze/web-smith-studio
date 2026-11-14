@@ -9,7 +9,8 @@ const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 // Every page that should appear in the sitemap, written without a language. Keep in step with `pages()` in
 // src/routes/router.jsx. The sitemap lists each page once per language (see src/i18n/locales.js).
-const pageRoutes = ["/", "/services", "/work", "/pricing", "/about", "/contact", "/privacy", "/terms"];
+// "/pricing" is switched off for now, like its route.
+const pageRoutes = ["/", "/services", "/work", /* "/pricing", */ "/about", "/contact", "/privacy", "/terms"];
 const priorityFor = (route) => (route === "/" ? "1.0" : route === "/privacy" || route === "/terms" ? "0.3" : "0.8");
 
 /**

@@ -88,6 +88,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+
+  // While the language switch is off this row only holds the theme switch, which the header shows from
+  // 480px up, so the empty row would just add a gap. Remove this rule when the language switch comes back.
+  @include up("xs") {
+    display: none;
+  }
 }
 
 // The header shows the theme switch from 480px up, so the menu only needs it on phones.

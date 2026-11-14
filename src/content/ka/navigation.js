@@ -7,7 +7,8 @@ export const primaryNav = [
   { label: "სერვისები", to: "/services", children: services },
   { label: "ნამუშევრები", to: "/work" },
   { label: "პროცესი", to: "/#process" },
-  { label: "ფასები", to: "/pricing" },
+  // ფასების გვერდი დროებით გამორთულია (იხ. src/routes/router.jsx).
+  // { label: "ფასები", to: "/pricing" },
   { label: "ჩვენ შესახებ", to: "/about" },
 ];
 
@@ -20,7 +21,7 @@ export const footerColumns = [
       { label: "მთავარი", to: "/" },
       { label: "როგორ ვმუშაობთ", to: "/#process" },
       { label: "შერჩეული ნამუშევრები", to: "/work" },
-      { label: "ფასები", to: "/pricing" },
+      // { label: "ფასები", to: "/pricing" },
       { label: "პროექტის კალკულატორი", to: "/#estimator" },
     ],
   },

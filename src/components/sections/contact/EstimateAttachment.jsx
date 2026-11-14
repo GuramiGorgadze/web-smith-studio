@@ -23,9 +23,7 @@ export function EstimateAttachment({ estimate, included, onToggle }) {
           <>
             <p className={styles.title}>{text.included}</p>
             <p className={styles.headline}>{estimate.headline}</p>
-            <p className={styles.details}>
-              {estimate.features}. {estimate.timeline}.
-            </p>
+            <p className={styles.details}>{estimate.features}.</p>
             <p className={styles.range}>
               <span className="tabular">{estimate.range}</span>
               <span className={styles.weeks}>{t(text.about, { weeks: estimate.weeks })}</span>

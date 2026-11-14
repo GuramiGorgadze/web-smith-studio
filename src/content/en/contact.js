@@ -6,19 +6,18 @@ import { siteText } from "./site.js";
 export const projectTypes = [
   { id: "landing", label: "Landing page" },
   { id: "business", label: "Business website" },
-  { id: "store", label: "Online store" },
-  { id: "webapp", label: "Web app or portal" },
   { id: "redesign", label: "Redesign or migration" },
   { id: "seo", label: "SEO and speed" },
   { id: "care", label: "Care plan" },
   { id: "unsure", label: "Not sure yet" },
 ];
 
+// The estimator picks one of these from the middle of its range (src/lib/contactForm.js).
 export const budgetOptions = [
-  { id: "under-2k", label: "Under $2,000" },
-  { id: "2k-5k", label: "$2,000 to $5,000" },
-  { id: "5k-10k", label: "$5,000 to $10,000" },
-  { id: "10k-plus", label: "$10,000 or more" },
+  { id: "under-500", label: "Under $500" },
+  { id: "500-1k", label: "$500 to $1,000" },
+  { id: "1k-2k", label: "$1,000 to $2,000" },
+  { id: "2k-plus", label: "$2,000 or more" },
   { id: "unsure", label: "Not sure yet" },
 ];
 
@@ -79,7 +78,7 @@ export const contactText = {
     message: {
       label: "How can we help?",
       hint: "A few sentences about your business and what you want the website to achieve is perfect.",
-      placeholder: "We run a small café and want a website with our menu, opening hours and online ordering.",
+      placeholder: "We run a small café and want a website with our menu, opening hours and a map.",
     },
     care: {
       label: "Tell me about a monthly care plan",

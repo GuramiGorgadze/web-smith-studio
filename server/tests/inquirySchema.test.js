@@ -17,7 +17,7 @@ describe("parseInquiry", () => {
     assert.equal(result.data.name, "Daniel Brooks");
     assert.equal(result.data.email, "daniel@example.com");
     assert.equal(result.data.locale, "en");
-    assert.deepEqual(result.data.ids, { projectType: "landing", budget: "under-2k", timeline: "flexible", care: false });
+    assert.deepEqual(result.data.ids, { projectType: "landing", budget: "under-500", timeline: "flexible", care: false });
     assert.equal("somethingElse" in result.data, false);
     assert.equal("website" in result.data, false);
   });

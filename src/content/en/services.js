@@ -1,60 +1,42 @@
 // `slug`, `icon`, `from`, `recurring` and `contactType` are the same in every language; the rest is words.
-// `recurring: "monthly"` means the price is per month.
+// `recurring: "monthly"` means the price is per month. Keep the `from` prices in step with src/lib/estimator.js.
 
 export const services = [
   {
     slug: "business-websites",
     icon: "layout",
     eyebrow: "most popular",
-    title: "Business websites",
-    summary: "Fast, polished multi-page sites for local businesses and growing brands.",
+    title: "Business and organization websites",
+    summary: "Fast, polished multi-page sites for businesses, organizations and growing brands.",
     description:
-      "Everything a business needs to look credible and get found: a custom design, clear messaging, mobile-first pages, local search set-up and a simple way to update your own content.",
+      "Everything a business or organization needs to look credible and get found: a custom design, clear messaging, mobile-first pages, local search set-up and a simple way to update your own content. Add a blog or news section, more languages and copywriting whenever you need them.",
     bullets: [
       "Custom design, never a template",
       "Up to 25 pages with clear navigation",
-      "Editable content (optional CMS)",
+      "Content editor, blog and news on request",
       "Local SEO and Google Business set-up",
     ],
-    idealFor: "Cafés, clinics, studios, agencies, consultants and trades.",
-    from: 2800,
+    idealFor: "Cafés, clinics, studios, consultants, trades, schools and non-profits.",
+    from: 700,
     contactType: "business",
   },
   {
-    slug: "online-stores",
-    icon: "store",
-    eyebrow: "sell online",
-    title: "Online stores",
-    summary: "Storefronts that load quickly and convert on every screen size.",
+    slug: "landing-pages",
+    icon: "rocket",
+    eyebrow: "one page, one goal",
+    title: "Landing pages",
+    summary: "One focused page that turns visitors into calls, sign-ups and inquiries.",
     description:
-      "Product pages, search and filters, secure checkout and order emails, all built around how your customers actually shop. We connect the payment, shipping and tax tools you already use.",
+      "For a launch, a campaign, an event or a new business that needs to be online fast: one carefully structured page with a single clear call to action, a contact form and everything set up so people can find and share it.",
     bullets: [
-      "Catalog with variants and stock",
-      "Secure card and wallet payments",
-      "Shipping, tax and discount rules",
-      "Order notifications and receipts",
+      "Custom design built around one goal",
+      "Contact form with email alerts",
+      "On-page SEO and social sharing cards",
+      "Live in about 1 to 2 weeks",
     ],
-    idealFor: "Independent brands, boutiques, makers and wholesalers.",
-    from: 6500,
-    contactType: "store",
-  },
-  {
-    slug: "web-apps",
-    icon: "app",
-    eyebrow: "custom software",
-    title: "Web apps and portals",
-    summary: "Client portals, booking systems and dashboards that fit your workflow.",
-    description:
-      "When off-the-shelf tools stop fitting, we build the missing piece: secure logins, role-based dashboards, online booking, document sharing and integrations with the systems you already use.",
-    bullets: [
-      "Secure sign-in and roles",
-      "Dashboards and reporting",
-      "Bookings, forms and approvals",
-      "API and third-party integrations",
-    ],
-    idealFor: "Service firms, schools, logistics and growing teams.",
-    from: 9000,
-    contactType: "webapp",
+    idealFor: "Launches, campaigns, events, single products and new businesses.",
+    from: 300,
+    contactType: "landing",
   },
   {
     slug: "redesigns",
@@ -71,7 +53,7 @@ export const services = [
       "New design, faster platform",
     ],
     idealFor: "Businesses with a dated, slow or hard-to-edit website.",
-    from: 2200,
+    from: 550,
     contactType: "redesign",
   },
   {
@@ -89,7 +71,7 @@ export const services = [
       "Monthly plain-English reports",
     ],
     idealFor: "Sites that look good but are slow or hard to find.",
-    from: 900,
+    from: 200,
     contactType: "seo",
   },
   {
@@ -107,7 +89,7 @@ export const services = [
       "Quarterly growth review",
     ],
     idealFor: "Anyone who would rather run their business than their website.",
-    from: 120,
+    from: 25,
     recurring: "monthly",
     contactType: "care",
   },

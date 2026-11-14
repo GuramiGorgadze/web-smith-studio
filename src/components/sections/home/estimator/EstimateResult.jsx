@@ -10,10 +10,10 @@ import { formatUSD } from "@/lib/format";
 import styles from "./EstimateResult.module.scss";
 
 /**
- * Result panel of the estimator: price range, timeline, budget split and the next step.
- * `packagesTo` is where the "packages" link in the footnote goes (the pricing page itself uses "#packages").
+ * Result panel of the estimator: price range, delivery time, budget split and the next step.
+ * `packagesTo` is where the "packages" link in the footnote goes: the packages section of the home page.
  */
-export function EstimateResult({ input, result, packagesTo = "/pricing" }) {
+export function EstimateResult({ input, result, packagesTo = "/#pricing" }) {
   const { t } = useI18n();
   const { sections, estimator: words } = useContent();
   const text = sections.estimatorTool.result;

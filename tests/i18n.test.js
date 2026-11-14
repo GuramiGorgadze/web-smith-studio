@@ -7,17 +7,26 @@ import { fallbackText } from "../src/i18n/fallback.js";
 import { createI18n } from "../src/i18n/createI18n.js";
 import { LOCALES, LOCALE_META, createRouting, normalizeDefaultLocale } from "../src/i18n/locales.js";
 import { format, marksOf, parseRich, pluralize } from "../src/i18n/text.js";
-import { GEORGIAN, loadLocale } from "./helpers/content.js";
+import { CONTENT_LOCALES, GEORGIAN, loadLocale } from "./helpers/content.js";
 
 const content = { en: await loadLocale("en"), ka: await loadLocale("ka") };
 
+// The address machinery is tested with two languages, as it works when Georgian is switched on. What the site
+// publishes today (English only, see src/i18n/locales.js) is checked separately.
+const BOTH = ["en", "ka"];
+
 describe("locales", () => {
-  it("publishes English and Georgian", () => {
-    assert.deepEqual([...LOCALES], ["en", "ka"]);
+  it("publishes English only while Georgian is switched off", () => {
+    assert.deepEqual([...LOCALES], ["en"]);
+  });
+
+  it("keeps Georgian ready to switch back on: its words and its description are still there", () => {
+    assert.ok(CONTENT_LOCALES.includes("ka"), "src/content/ka/ exists");
+    assert.ok(LOCALE_META.ka, "LOCALE_META.ka exists");
   });
 
   it("describes every language the same way", () => {
-    for (const code of LOCALES) {
+    for (const code of Object.keys(LOCALE_META)) {
       const meta = LOCALE_META[code];
       assert.equal(meta.code, code);
       for (const key of ["name", "nativeName", "short", "ogLocale"]) {
@@ -30,7 +39,8 @@ describe("locales", () => {
   });
 
   it("falls back to English for an unknown default language", () => {
-    assert.equal(normalizeDefaultLocale("ka"), "ka");
+    assert.equal(normalizeDefaultLocale("ka", BOTH), "ka");
+    assert.equal(normalizeDefaultLocale("ka"), "en", "a language that is switched off cannot be the default");
     assert.equal(normalizeDefaultLocale("en"), "en");
     assert.equal(normalizeDefaultLocale("de"), "en");
     assert.equal(normalizeDefaultLocale(""), "en");
@@ -39,7 +49,7 @@ describe("locales", () => {
 });
 
 describe("createRouting with English as the default", () => {
-  const routing = createRouting("en");
+  const routing = createRouting("en", BOTH);
 
   it("keeps English at the plain addresses and puts Georgian under /ka", () => {
     assert.equal(routing.defaultLocale, "en");
@@ -83,7 +93,7 @@ describe("createRouting with English as the default", () => {
 
   it("round-trips: strip(localize(path)) gives the path back", () => {
     for (const path of ["/", "/work", "/work/lumen-yoga", "/pricing", "/contact", "/privacy"]) {
-      for (const locale of LOCALES) {
+      for (const locale of BOTH) {
         assert.deepEqual(routing.strip(routing.localize(path, locale)), { locale, path });
       }
     }
@@ -110,8 +120,22 @@ describe("createRouting with English as the default", () => {
   });
 });
 
+describe("createRouting with only English published", () => {
+  const routing = createRouting("en");
+
+  it("has no Georgian addresses: /ka is an ordinary path that leads nowhere", () => {
+    assert.deepEqual(routing.locales, ["en"]);
+    assert.deepEqual(routing.strip("/ka/work"), { locale: "en", path: "/ka/work" });
+    assert.deepEqual(routing.alternates("/work"), [{ locale: "en", path: "/work" }]);
+  });
+
+  it("never sends a Georgian browser to a Georgian version", () => {
+    assert.equal(routing.pick(["ka-GE", "ka"]), "en");
+  });
+});
+
 describe("createRouting with Georgian as the default", () => {
-  const routing = createRouting("ka");
+  const routing = createRouting("ka", BOTH);
 
   it("moves Georgian to the plain addresses and English under /en", () => {
     assert.equal(routing.defaultLocale, "ka");
@@ -213,7 +237,7 @@ describe("parseRich and marksOf", () => {
 });
 
 describe("createI18n", () => {
-  const routing = createRouting("en");
+  const routing = createRouting("en", BOTH);
   const i18n = { en: createI18n("en", content.en, routing), ka: createI18n("ka", content.ka, routing) };
 
   it("knows the language and its address rules", () => {
@@ -235,8 +259,16 @@ describe("createI18n", () => {
     ]);
   });
 
+  it("lists only the published languages for the language switch and the hreflang tags", () => {
+    const published = createI18n("en", content.en, createRouting("en"));
+    assert.deepEqual(
+      published.languages.map((language) => language.code),
+      [...LOCALES],
+    );
+  });
+
   it("fills the values every string may use without being told", () => {
-    for (const code of LOCALES) {
+    for (const code of BOTH) {
       const text = i18n[code].t("{name}|{email}|{responseTime}|{founded}");
       const site = content[code].site;
       assert.equal(text, `${site.name}|${site.email}|${site.responseTime}|${site.founded}`);
@@ -264,7 +296,7 @@ describe("createI18n", () => {
 describe("fallbackText (the loading and error screens)", () => {
   it("has the same strings in every language", () => {
     const keys = Object.keys(fallbackText.en).sort();
-    for (const code of LOCALES) {
+    for (const code of CONTENT_LOCALES) {
       assert.ok(fallbackText[code], `${code} is missing`);
       assert.deepEqual(Object.keys(fallbackText[code]).sort(), keys, code);
     }
@@ -280,7 +312,7 @@ describe("fallbackText (the loading and error screens)", () => {
   });
 
   it("names the studio in the page title of the error screen", () => {
-    for (const code of LOCALES) {
+    for (const code of CONTENT_LOCALES) {
       assert.ok(fallbackText[code].errorHeadTitle.endsWith("| Web Smith Studio"), code);
     }
   });

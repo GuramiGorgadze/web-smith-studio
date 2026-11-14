@@ -10,10 +10,11 @@ import { Rich } from "@/i18n/Rich";
 import { breadcrumbJsonLd } from "@/lib/structuredData";
 import styles from "./WorkPage.module.scss";
 
-/** Portfolio overview with category filters. All projects are concepts until real case studies replace them. */
+/** Portfolio overview with category filters. A note explains concept projects while any are shown. */
 export default function WorkPage() {
   const i18n = useI18n();
   const text = i18n.content.pages.work;
+  const hasConcepts = i18n.content.projects.items.some((project) => project.isConcept);
 
   return (
     <>
@@ -36,9 +37,11 @@ export default function WorkPage() {
 
       <Section spacing="tight" aria-label={text.sectionLabel}>
         <div className={styles.stack}>
-          <ConceptNotice>
-            <Rich text={text.notice} />
-          </ConceptNotice>
+          {hasConcepts ? (
+            <ConceptNotice>
+              <Rich text={text.notice} />
+            </ConceptNotice>
+          ) : null}
           <WorkGrid />
         </div>
       </Section>

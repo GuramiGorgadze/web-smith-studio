@@ -2,7 +2,8 @@ import { ArrowRight, Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Logo } from "@/components/brand/Logo";
-import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
+// Georgian is switched off for now (src/i18n/locales.js), so there is no language switch.
+// import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { ThemeSegmented } from "@/components/layout/ThemeToggle";
 import {
   ButtonLink,
@@ -76,7 +77,7 @@ export function MobileNav() {
 
         <div className={styles.footer}>
           <div className={styles.preferences}>
-            <LanguageSwitch variant="segmented" />
+            {/* <LanguageSwitch variant="segmented" /> */}
             <div className={styles.theme}>
               <ThemeSegmented />
             </div>

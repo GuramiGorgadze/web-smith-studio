@@ -7,13 +7,23 @@ import { SpotlightCard } from "@/components/common/SpotlightCard";
 import { ButtonLink } from "@/components/ui";
 import { useI18n } from "@/i18n/I18nContext";
 import { Link } from "@/i18n/Link";
+import { cn } from "@/lib/cn";
 import { formatUSD } from "@/lib/format";
 import styles from "./ServicesGrid.module.scss";
 
-/** Six service cards with a pointer-following spotlight. */
+/**
+ * How many cards, counted from the first, take half a row on wide screens so that every row is full:
+ * the rest sit three to a row. Five services give 2 + 3, four give 2 + 2, six give 3 + 3.
+ */
+function wideCount(total) {
+  return [0, 4, 2][total % 3];
+}
+
+/** Service cards with a pointer-following spotlight. */
 export function ServicesGrid() {
   const { content, ui, t } = useI18n();
   const text = content.sections.servicesGrid;
+  const wide = wideCount(content.services.length);
 
   return (
     <Section id="services" aria-labelledby="services-title">
@@ -33,7 +43,12 @@ export function ServicesGrid() {
 
       <ul className={styles.grid}>
         {content.services.map((service, index) => (
-          <Reveal as="li" key={service.slug} delay={(index % 3) * 90} className={styles.cell}>
+          <Reveal
+            as="li"
+            key={service.slug}
+            delay={(index % 3) * 90}
+            className={cn(styles.cell, index < wide && styles.wide)}
+          >
             <SpotlightCard className={styles.card}>
               <IconTile name={service.icon} />
               <div className={styles.body}>

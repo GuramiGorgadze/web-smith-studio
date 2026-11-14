@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/common/Container";
-import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
+// Georgian is switched off for now (src/i18n/locales.js), so there is no language button.
+// import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { ServicesMenu } from "@/components/layout/ServicesMenu";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
@@ -26,7 +27,7 @@ function isActive(item, current) {
   return current === item.to || current.startsWith(`${item.to}/`);
 }
 
-/** Sticky top bar: logo, Radix navigation menu, language and theme switches, call to action and mobile sheet. */
+/** Sticky top bar: logo, Radix navigation menu, theme switch, call to action and mobile sheet. */
 export function Navbar() {
   const scrolled = useScrolled(8);
   const { pathname } = useLocation();
@@ -63,7 +64,7 @@ export function Navbar() {
         </nav>
 
         <div className={styles.actions}>
-          <LanguageSwitch />
+          {/* <LanguageSwitch /> */}
           <span className={styles.theme}>
             <ThemeToggle />
           </span>

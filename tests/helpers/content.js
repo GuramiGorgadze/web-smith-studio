@@ -24,6 +24,17 @@ export const facts = Object.freeze({
   socials: [{ label: "GitHub", href: "https://github.com" }],
 });
 
+/**
+ * Every language that has a content folder, published or not: ["en", "ka"]. The tests check all of them, so a
+ * language that is switched off in src/i18n/locales.js (Georgian, for now) stays complete and ready to switch on.
+ */
+export const CONTENT_LOCALES = Object.freeze(
+  readdirSync(CONTENT_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort((a, b) => (a === "en" ? -1 : b === "en" ? 1 : a.localeCompare(b))),
+);
+
 /** The content files of a language folder, without index.js: ["about", "contact", ...]. */
 export function moduleNames(locale) {
   return readdirSync(path.join(CONTENT_DIR, locale))
