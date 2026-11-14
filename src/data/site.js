@@ -4,8 +4,8 @@
 export const site = {
   name: "Web Smith Studio",
   shortName: "Web Smith",
-  url: import.meta.env.VITE_SITE_URL || "https://your-domain.com",
-  email: import.meta.env.VITE_CONTACT_EMAIL || "hello@your-domain.com",
+  url: import.meta.env.VITE_SITE_URL || "https://websmith.studio",
+  email: import.meta.env.VITE_CONTACT_EMAIL || "g.gorgadze111@gmail.com",
   founded: 2026,
 
   socials: [
